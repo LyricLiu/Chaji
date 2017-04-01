@@ -376,6 +376,99 @@ header{
 	background-image: url(./img/decobuy2_lock.png);
 }
 
+/****label****/
+
+#label div:nth-child(1){
+	position: absolute;
+	left:5%;
+	top:30px;
+	width:74px;
+	height:35px;
+	background-image: url(./img/stove_label.png);
+}
+
+#label div:nth-child(2){
+	position: absolute;
+	left:10%;
+	top:260px;
+	width:73px;
+	height:35px;
+	background-image: url(./img/sink_label.png);
+	z-index:9999;
+}
+
+#label div:nth-child(3){
+	position: absolute;
+	left:25%;
+	top:145px;
+	width:85px;
+	height:35px;
+	background-image: url(./img/teapet_label.png);
+}
+
+#label div:nth-child(4){
+	position: absolute;
+	left:36.5%;
+	top:30px;
+	width:119px;
+	height:35px;
+	background-image: url(./img/smelling_label.png);
+}
+
+#label div:nth-child(5){
+	position: absolute;
+	left:39.5%;
+	top:250px;
+	width:85px;
+	height:35px;
+	background-image: url(./img/pitcher_label.png);
+}
+
+#label div:nth-child(6){
+	position: absolute;
+	left:51%;
+	top:150px;
+	width:119px;
+	height:35px;
+	background-image: url(./img/cup_label.png);
+}
+
+#label div:nth-child(7){
+	position: absolute;
+	left:55%;
+	top:230px;
+	width:119px;
+	height:35px;
+	background-image: url(./img/pot_label.png);
+}
+
+#label div:nth-child(8){
+	position: absolute;
+	left:68.8%;
+	top:24px;
+	width:80px;
+	height:35px;
+	background-image: url(./img/dessert_label.png);
+}
+
+#label div:nth-child(9){
+	position: absolute;
+	left:85%;
+	top:22px;
+	width:88px;
+	height:35px;
+	background-image: url(./img/teabox_label.png);
+}
+
+#label div:nth-child(10){
+	position: absolute;
+	left:84.5%;
+	top:226px;
+	width:106px;
+	height:35px;
+	background-image: url(./img/leaves_label.png);
+}
+
 
 
 
