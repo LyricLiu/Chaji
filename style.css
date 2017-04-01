@@ -226,7 +226,7 @@ header{
 	background-image: url(./img/teapet.png);
 }
 
-#teapet .lock{
+#teapet.lock{
 	background-image: url(./img/teapet_lock.png);
 }
 
@@ -239,7 +239,7 @@ header{
 	background-image: url(./img/smelling.png);
 }
 
-#smelling .lock{
+#smelling.lock{
 	background-image: url(./img/smelling_lock.png);
 }
 
@@ -270,7 +270,7 @@ header{
 	background-image: url(./img/pitcher.png);
 }
 
-#pitcher .lock{
+#pitcher.lock{
 	background-image: url(./img/pitcher_lock.png);
 }
 
@@ -292,7 +292,7 @@ header{
 	background-image: url(./img/dessert.png);
 }
 
-#dessert .lock{
+#dessert.lock{
 	background-image: url(./img/dessert_lock.png);
 }
 
@@ -350,7 +350,7 @@ header{
 	background-image: url(./img/deco3.png);
 }
 
-#decobuy div:nth-child(1){
+#decobuy1 {
 	position: absolute;
 	left:25%;
 	top:40px;
@@ -359,11 +359,11 @@ header{
 	background-image: url(./img/decobuy1.png);
 }
 
-#decobuy div:nth-child(1) .lock{
+#decobuy1.lock{
 	background-image: url(./img/decobuy1_lock.png);
 }
 
-#decobuy div:nth-child(2){
+#decobuy2{
 	position: absolute;
 	left:72%;
 	top:340px;
@@ -372,7 +372,7 @@ header{
 	background-image: url(./img/decobuy2.png);
 }
 
-#decobuy div:nth-child(2) .lock{
+#decobuy2.lock{
 	background-image: url(./img/decobuy2_lock.png);
 }
 
