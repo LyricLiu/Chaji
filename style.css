@@ -33,11 +33,8 @@ header{
 
 #header_day{
 	position: absolute;
-	left:70px;
+	left:67px;
 	top:15px;
-	width:126px;
-	height:59px;
-	background-image: url(./img/day1.png);
 }
 
 #header_hour{
@@ -57,7 +54,7 @@ header{
 	background-color: #353d59;
 }
 
-#header_hour div .hour{
+#header_hour div.hour{
 	background-color: #6d799d;
 }
 
@@ -157,12 +154,33 @@ header{
 	top:29px;
 	width:176px;
 	height:88px;
+}
+
+#seat1pic {
 	background-image: url(./img/seat.png);
 }
 
-.seat div .lock{
-	width:176px;
-	height:88px;
+#seat2pic {
+	background-image: url(./img/seat.png);
+}
+
+#seat3pic {
+	background-image: url(./img/seat.png);
+}
+
+#seat4pic {
+	background-image: url(./img/seat.png);
+}
+
+#seat2pic.lock{
+	background-image: url(./img/seat_lock.png);
+}
+
+#seat3pic.lock{
+	background-image: url(./img/seat_lock.png);
+}
+
+#seat4pic.lock{
 	background-image: url(./img/seat_lock.png);
 }
 
