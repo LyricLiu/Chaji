@@ -8,7 +8,7 @@
             this.cost = cost;
         }
 
-        var state = 1;
+        var state = 0;
         var level = 0;
         var money = 0;
         var tea = 0;
@@ -129,8 +129,10 @@
                 $('#guest_pic').css("background-image", picg);
                 if(Guest[guestIndex].chat == false){
                 	$('#intro_chat').css('display','none');
+                	$('#guest_explain').css('display','none');
                 }else{
                 	$('#intro_chat').css('display','block');
+                	$('#guest_explain').css('display','block');
                 }
                 $('#intro_brew').click(function(){
                 	state = 1;
