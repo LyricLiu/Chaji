@@ -13,6 +13,10 @@
         var money = 0;
         var tea = 0;
         var guestIndex = 0;
+        var brewProcess = 0;
+        var teaPrice = 20;
+        var seatNum = 1;
+        var calcMoney = false;
 
         var timeNow = [0, 0];
 
@@ -78,7 +82,7 @@
                 }
             }
 
-            function SetHeader() {
+            function setHeader() {
                 var i;
                 for (i = 0; i <= timeNow[1]; i++) {
                     var hour = '#hour' + i.toString();
@@ -107,9 +111,107 @@
                 $('#money').html(money);
             }
 
-            lockOn();
-            SetHeader();
-            setPara();
+            function setMoneyPic(){
+                if ((teaPrice >= 60) && (teaPrice <= 200)) {
+                    $('.money_pay').css('background-image','url(./img/money2.png)');
+                }else if (teaPrice > 200){
+                    $('.money_pay').css('background-image','url(./img/money3.png)');
+                }
+            }
+            /***************** Drag Function *********************/
+            /*
+                source: '#source'
+                fn:function
+            */
+            var dragT = false;
+            
+            function drag(source,target,fn){
+                var $sourceClone;
+
+                $(document).on('mousedown', source, function(ev){
+                    $sourceClone = $(source).clone();
+                    $('body').append($sourceClone);
+                    $(source).css('display','none');
+
+                    $sourceClone.css({
+                        opacity: 1,
+                        marginTop: '-50px',
+                        marginLeft: '-50px',
+                        pointerEvents: 'none'
+                    });
+                })
+
+                .on('mousemove', function(ev){
+                    $sourceClone && $sourceClone.css({
+                        left: ev.pageX,
+                        top: ev.pageY
+                    });
+                })
+
+                .on('mouseenter', target, function(){
+                    if($sourceClone){
+                        console.log('mouseenter');
+                        fn();
+                        dragT = true;
+                    }
+                })
+
+                .on('mouseup', target, function(){
+                    if($sourceClone){
+                        console.log('mouseup');
+                        $(source).css('display','block');
+                    }  
+                })
+
+                .on('mouseup', function(){
+                    if($sourceClone){
+                    $sourceClone.remove();
+                    $sourceClone = null;
+                    $(source).css('display','block');
+                    }
+                })
+            }
+
+            /****************** Brew Animation *********************/
+            function addLeaves(){
+                $('#pot').css('background-image','url(./img/pot_1.png)');
+            }
+
+            function addWaterLeaves(){
+                setTimeout(function(){ $('#pot').css('background-image','url(./img/pot_2.png)'); }, 300);
+                setTimeout(function(){ $('#pot').css('background-image','url(./img/pot_3.png)'); }, 600);
+                setTimeout(function(){ $('#pot').css('background-image','url(./img/pot_4.png)'); }, 900);
+                setTimeout(function(){ $('#pot').css('background-image','url(./img/pot.png)'); }, 1200);
+            }
+
+            function pourTeaCup(){
+                if(tea==0){
+                    $('#cup').css('background-image','url(./img/cup_1.png)');
+                }else if(tea==1){
+                    $('#cup').css('background-image','url(./img/cup_2.png)');
+                }else if(tea==2){
+                    $('#cup').css('background-image','url(./img/cup_3.png)');
+                }
+            }
+
+            function payMoney1(){
+                $('#seat1_money').css('display','block');
+            }
+            function payMoney2(){
+                $('#seat2_money').css('display','block');
+                $('#seat1_money').css('display','block');
+            }
+            function payMoney3(){
+                $('#seat3_money').css('display','block');
+                $('#seat2_money').css('display','block');
+                $('#seat1_money').css('display','block');
+            }
+            function payMoney4(){
+                $('#seat4_money').css('display','block');
+                $('#seat3_money').css('display','block');
+                $('#seat2_money').css('display','block');
+                $('#seat1_money').css('display','block');
+            }
 
             /******************* Game Flow **********************/
             /*  state == 0 guest intro
@@ -118,33 +220,166 @@
                 state == 3 pay money
             */
 
-            if (state == 0) {
-                $("#guest_window").css('display', 'block');
-                $("#guest_intro").html(Guest[guestIndex].intro);
-                $('#seat1 p').html(Guest[guestIndex].name[0]);
-                $('#seat2 p').html(Guest[guestIndex].name[1]);
-                $('#seat3 p').html(Guest[guestIndex].name[2]);
-                $('#seat4 p').html(Guest[guestIndex].name[3]);
-                var picg = 'url(./img/g' + guestIndex + '.png)';
-                $('#guest_pic').css("background-image", picg);
-                if(Guest[guestIndex].chat == false){
-                	$('#intro_chat').css('display','none');
-                	$('#guest_explain').css('display','none');
-                }else{
-                	$('#intro_chat').css('display','block');
-                	$('#guest_explain').css('display','block');
+            function changeState(){
+                if (state == 0) {
+                    $("#guest_window").css('display', 'block');
+                    $("#guest_intro").html(Guest[guestIndex].intro);
+                    $('#seat1 p').html(Guest[guestIndex].name[0]);
+                    $('#seat2 p').html(Guest[guestIndex].name[1]);
+                    $('#seat3 p').html(Guest[guestIndex].name[2]);
+                    $('#seat4 p').html(Guest[guestIndex].name[3]);
+                    var picg = 'url(./img/g' + guestIndex + '.png)';
+                    $('#guest_pic').css("background-image", picg);
+                    if(Guest[guestIndex].chat == false){
+                        $('#intro_chat').css('display','none');
+                        $('#guest_explain').css('display','none');
+                    }else{
+                        $('#intro_chat').css('display','block');
+                        $('#guest_explain').css('display','block');
+                    }
+                    $('#intro_brew').click(function(){
+                        state = 1;
+                        $("#guest_window").css('display', 'none');
+                    });
+                    $('#intro_chat').click(function(){
+                        state = 2;
+                        $("#guest_window").css('display', 'none');
+                    })
                 }
-                $('#intro_brew').click(function(){
-                	state = 1;
-                });
-                $('#intro_chat').click(function(){
-                	state = 2;
-                })
+
+                function brewInit(){
+                    $('#leavesup').css('display','none');
+                    $('#pot').css('background-image','url(./img/pot.png)');
+                    $('#cup').css('background-image','url(./img/cup.png)');
+
+                }
+
+                if (state == 1) {
+                    if (brewProcess == 0){
+                        $('#teabox').css('cursor','pointer');
+                        $('#teabox').click(function(){
+                            $('#selectTea').css('display','block');
+                            brewProcess = 1;
+                        });
+                    }else if(brewProcess ==1 ){
+                        if(puer.lock == false){
+                            if(oolong.lock == false){
+                                $('#longjing').click(function(){
+                                    tea = 0;
+                                    $("#selectTea").css('display', 'none');
+                                    brewProcess = 2;
+                                    $('#leavesup').css('display', 'block');
+                                });
+                                $('#puer').click(function(){
+                                    tea = 1;
+                                    $("#selectTea").css('display', 'none');
+                                    brewProcess = 2;
+                                    $('#leavesup').css('display', 'block');
+                                });
+                                $('#oolong').click(function(){
+                                    tea = 2;
+                                    $("#selectTea").css('display', 'none');
+                                    brewProcess = 2;
+                                    $('#leavesup').css('display', 'block');
+                                });
+                            }else{
+                                $('#longjing').click(function(){
+                                    tea = 0;
+                                    $("#selectTea").css('display', 'none');
+                                    brewProcess = 2;
+                                    $('#leavesup').css('display', 'block');
+                                });
+                                $('#puer').click(function(){
+                                    tea = 1;
+                                    $("#selectTea").css('display', 'none');
+                                    brewProcess = 2;
+                                    $('#leavesup').css('display', 'block');
+                                });
+                            }
+                        }else{
+                            $('#longjing').click(function(){
+                                tea = 0;
+                                $("#selectTea").css('display', 'none');
+                                brewProcess = 2;
+                                $('#leavesup').css('display', 'block');
+                            });
+                        }
+                    }else if(brewProcess == 2){
+                        drag('#leavesup','#pot',addLeaves);
+                        if (dragT == true){
+                            brewProcess = 3;
+                            dragT = false;
+                        }
+                    }else if(brewProcess == 3){
+                        drag('#stove','#pot',addWaterLeaves);
+                        if (dragT == true){
+                            brewProcess = 4;
+                            dragT = false;
+                        }
+                    }else if(brewProcess == 4){
+                        drag('#pot','#cup',pourTeaCup);
+                        if (dragT == true){
+                            brewProcess = 5;
+                            dragT = false;
+                        }
+                    }else if(brewProcess == 5){
+                        if (seat4.lock == false) {
+                            drag('#cup','#seat1pic',payMoney4);
+                            drag('#cup','#seat2pic',payMoney4);
+                            drag('#cup','#seat3pic',payMoney4);
+                            drag('#cup','#seat4pic',payMoney4);
+                            if (dragT == true){
+                                brewProcess = 6;
+                                dragT = false;
+                            }
+                        }else if(seat3.lock == false){
+                            drag('#cup','#seat1pic',payMoney3);
+                            drag('#cup','#seat2pic',payMoney3);
+                            drag('#cup','#seat3pic',payMoney3);
+                            if (dragT == true){
+                                brewProcess = 6;
+                                dragT = false;
+                            }
+                        }else if(seat2.lock == false){
+                            drag('#cup','#seat1pic',payMoney2);
+                            drag('#cup','#seat2pic',payMoney2);
+                            if (dragT == true){
+                                brewProcess = 6;
+                                dragT = false;
+                            }
+                        }else{
+                            drag('#cup','#seat1pic',payMoney1);
+                            if (dragT == true){
+                                brewProcess = 6;
+                                dragT = false;
+                            }
+                        } 
+                    }else if(brewProcess == 6){
+                        $('.money_pay').click(function(){
+                            $('.money_pay').css('display','none');
+                            $('#money_board').css('display','block');
+                            calcMoney  = true;
+                        });
+                    }
+                }
+
+            }
+            function calcM(){
+                if (calcMoney == true) {
+                    money = money + teaPrice * seatNum;
+                    calcMoney = false;
+                }
             }
 
-            if (state == 1) {
+            /******************* Update ************************/
 
-            }
+            var myVar = setInterval(changeState, 300);
+            var myVar1 = setInterval(lockOn, 300);
+            var myVar2 = setInterval(setHeader, 300);
+            var myVar3 = setInterval(setPara, 300);
+            var myVar4 = setInterval(setMoneyPic, 300);
+            var myVar4 = setInterval(calcM, 100);
+
 
 
         })();
