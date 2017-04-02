@@ -8,6 +8,10 @@
 		this.cost = cost;
 	}
 
+	var state = 0;
+	var level = 0;
+	var money = 0;
+
 	var timeNow = [0,0];
 
 	var teapet = new teaset('teapet',true,3,200,800);
@@ -67,8 +71,24 @@
 		$('#header_day').attr('src', dayimage);
 	}
 
+	function setPara(){
+		if (level==0){
+			$('#level').html("Novel");
+		}else if(level==1){
+			$('#level').html("Beginner");
+		}else if(level==2){
+			$('#level').html("Intermediated");
+		}else if(level==3){
+			$('#level').html("Advanced");
+		}else {
+			$('#level').html("Expert");
+		}
+		$('#money').html(money);
+	}
+
 	lockOn();
 	SetHeader();
+	setPara();
 	
 
 })();

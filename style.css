@@ -64,7 +64,7 @@ header{
 
 #icon1{
 	position: absolute;
-	left:70px;
+	left:4.9%;
 	top:15px;
 	width:39px;
 	height:32px;
@@ -73,7 +73,7 @@ header{
 
 #icon2{
 	position: absolute;
-	left:175px;
+	left:12.2%;
 	top:11px;
 	width:39px;
 	height:39px;
@@ -82,7 +82,7 @@ header{
 
 #icon3{
 	position: absolute;
-	left:265px;
+	left:18.4%;
 	top:12px;
 	width:45px;
 	height:37px;
@@ -91,7 +91,7 @@ header{
 
 #icon4{
 	position: absolute;
-	left:365px;
+	left:25.35%;
 	top:10px;
 	width:33px;
 	height:41px;
@@ -100,7 +100,7 @@ header{
 
 #icon5{
 	position: absolute;
-	right:365px;
+	left:72%;
 	top:10px;
 	width:40px;
 	height:45px;
@@ -109,7 +109,7 @@ header{
 
 #icon6{
 	position: absolute;
-	right:200px;
+	left:84%;
 	top:11px;
 	width:31px;
 	height:42px;
@@ -118,13 +118,13 @@ header{
 
 #money{
 	position: absolute;
-	right:280px;
+	left:76%;
 	top:15px;
 }
 
 #level{
 	position: absolute;
-	right:100px;
+	left:87.4%;
 	top:15px;
 }
 
@@ -412,7 +412,7 @@ header{
 	width:73px;
 	height:35px;
 	background-image: url(./img/sink_label.png);
-	z-index:9999;
+	z-index:99;
 }
 
 #label div:nth-child(3){
@@ -485,6 +485,85 @@ header{
 	width:106px;
 	height:35px;
 	background-image: url(./img/leaves_label.png);
+}
+
+/****************Guest Window******************/
+.bottom_window{
+	position: absolute;
+	width:100%;
+	height:280px;
+	bottom:0;
+	z-index:999;
+}
+
+.guest_window_bg{
+	width:100%;
+	height:100%;
+    background-color: #404763;
+	opacity:0.8;
+}
+
+#guest_pic{
+	position: absolute;
+	width:330px;
+	height:300px;
+	left:20px;
+	bottom:0;
+	background-image: url(./img/c1.png);
+}
+
+.chat_button{
+	position: absolute;
+	right:400px;
+	bottom: 30px;
+}
+
+.brew_button{
+	position: absolute;
+	right:150px;
+	bottom: 30px;
+}
+
+button {
+	width:200px;
+	height:40px;
+	background-color: #d1c5b8;
+	border: none;
+	font-size: 25px;
+	color:#fff;
+}
+
+button:hover{
+	color:#404763;
+	transition: all 0.5s ease-in-out;
+}
+
+#guest_explain{
+	position: absolute;
+	color:#d1c5b8;
+	bottom:20px;
+	left:350px;
+	opacity: 0.5;
+}
+
+.bottom_content{
+	font-family: brandon-grotesque, sans-serif;
+	position: absolute;
+	color:#fff;
+	top:30px;
+	left:350px;
+	width:65%;
+	font-size: 25px;
+	font-weight:300;
+}
+
+#chat_pic{
+	position: absolute;
+	width:330px;
+	height:300px;
+	left:20px;
+	bottom:0;
+	background-image: url(./img/c1.png);
 }
 
 
