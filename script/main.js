@@ -17,6 +17,19 @@
         var teaPrice = 20;
         var seatNum = 1;
         var calcMoney = false;
+        var seat1_tea = false;
+        var seat2_tea = false;
+        var seat3_tea = false;
+        var seat4_tea = false;
+        var seat1_m = false;
+        var seat2_m = false;
+        var seat3_m = false;
+        var seat4_m = false;
+        var seat1_mg = false;
+        var seat2_mg = false;
+        var seat3_mg = false;
+        var seat4_mg = false;
+
 
         var timeNow = [0, 0];
 
@@ -28,8 +41,8 @@
         var decobuy2 = new teaset('decobuy2', true, 1, 50, 200);
         var puer = new teaset('puer', true, 0, 0, 50);
         var oolong = new teaset('oolong', true, 1, 0, 100);
-        var seat2 = new teaset('seat2', true, 0, 0, 30);
-        var seat3 = new teaset('seat3', true, 0, 0, 100);
+        var seat2 = new teaset('seat2', false, 0, 0, 30);
+        var seat3 = new teaset('seat3', false, 0, 0, 100);
         var seat4 = new teaset('seat4', true, 0, 0, 300);
 
 
@@ -196,21 +209,43 @@
 
             function payMoney1(){
                 $('#seat1_money').css('display','block');
+                seat1_tea = true;
             }
             function payMoney2(){
                 $('#seat2_money').css('display','block');
-                $('#seat1_money').css('display','block');
+                seat2_tea = true;
             }
             function payMoney3(){
                 $('#seat3_money').css('display','block');
-                $('#seat2_money').css('display','block');
-                $('#seat1_money').css('display','block');
+                seat3_tea = true;
             }
             function payMoney4(){
                 $('#seat4_money').css('display','block');
-                $('#seat3_money').css('display','block');
-                $('#seat2_money').css('display','block');
-                $('#seat1_money').css('display','block');
+                seat4_tea = true;
+            }
+
+            function getMoney(){
+                $('#seat1_money').click(function(){
+                    seat1_m = true;
+                    seat1_mg = true;
+                    $('#seat1_money').css('display','none');
+                });
+                $('#seat2_money').click(function(){
+                    seat2_m = true;
+                    seat2_mg = true;
+                    $('#seat2_money').css('display','none');
+                });
+                $('#seat3_money').click(function(){
+                    seat3_m = true;
+                    seat3_mg = true;
+                    $('#seat3_money').css('display','none');
+                });
+                $('#seat4_money').click(function(){
+                    seat4_m = true;
+                    seat4_mg = true;
+                    $('#seat4_money').css('display','none');
+                })
+
             }
 
             /******************* Game Flow **********************/
@@ -219,6 +254,26 @@
                 state == 2 chat
                 state == 3 pay money
             */
+
+            function brewInit(){
+                    if(brew_init == true){
+                        $('#leavesup').css('display','none');
+                        $('#pot').css('background-image','url(./img/pot.png)');
+                        $('#cup').css('background-image','url(./img/cup.png)');
+                        seat1_tea = false;
+                        seat2_tea = false;
+                        seat3_tea = false;
+                        seat4_tea = false;
+                        seat1_mg = false;
+                        seat2_mg = false;
+                        seat3_mg = false;
+                        seat4_mg = false;
+                        timeNow[1] += 1;
+                        guestIndex += 1;
+                        brewProcess = 0; 
+                        brew_init = false;
+                    }
+                }
 
             function changeState(){
                 if (state == 0) {
@@ -245,13 +300,6 @@
                         state = 2;
                         $("#guest_window").css('display', 'none');
                     })
-                }
-
-                function brewInit(){
-                    $('#leavesup').css('display','none');
-                    $('#pot').css('background-image','url(./img/pot.png)');
-                    $('#cup').css('background-image','url(./img/cup.png)');
-
                 }
 
                 if (state == 1) {
@@ -324,50 +372,62 @@
                         }
                     }else if(brewProcess == 5){
                         if (seat4.lock == false) {
-                            drag('#cup','#seat1pic',payMoney4);
-                            drag('#cup','#seat2pic',payMoney4);
-                            drag('#cup','#seat3pic',payMoney4);
+                            drag('#cup','#seat1pic',payMoney1);
+                            drag('#cup','#seat2pic',payMoney2);
+                            drag('#cup','#seat3pic',payMoney3);
                             drag('#cup','#seat4pic',payMoney4);
-                            if (dragT == true){
-                                brewProcess = 6;
-                                dragT = false;
+                            getMoney();
+                            if ((seat1_tea == true) && (seat2_tea == true) && (seat3_tea == true) && (seat4_tea == true) && (seat1_mg == true) && (seat2_mg == true) && (seat3_mg == true) && (seat4_mg == true)){
+                                state = 0;
+                                brew_init = true;
                             }
                         }else if(seat3.lock == false){
-                            drag('#cup','#seat1pic',payMoney3);
-                            drag('#cup','#seat2pic',payMoney3);
+                            drag('#cup','#seat1pic',payMoney1);
+                            drag('#cup','#seat2pic',payMoney2);
                             drag('#cup','#seat3pic',payMoney3);
-                            if (dragT == true){
-                                brewProcess = 6;
-                                dragT = false;
+                            getMoney();
+                            console.log(seat1_tea);
+                            if (seat1_tea == true && seat2_tea == true && seat3_tea == true && seat1_mg == true && seat2_mg == true && seat3_mg == true){
+                                state = 0;
+                                brew_init = true;
                             }
                         }else if(seat2.lock == false){
-                            drag('#cup','#seat1pic',payMoney2);
+                            drag('#cup','#seat1pic',payMoney1);
                             drag('#cup','#seat2pic',payMoney2);
-                            if (dragT == true){
-                                brewProcess = 6;
-                                dragT = false;
+                            getMoney();
+                            if (seat1_tea == true && seat2_tea == true && seat1_mg == true && seat2_mg == true){
+                                state = 0;
+                                brew_init = true;
                             }
                         }else{
                             drag('#cup','#seat1pic',payMoney1);
-                            if (dragT == true){
-                                brewProcess = 6;
-                                dragT = false;
+                            getMoney();
+                            if (seat1_tea == true && seat1_mg == true){
+                                state = 0;
+                                brew_init = true;
                             }
                         } 
-                    }else if(brewProcess == 6){
-                        $('.money_pay').click(function(){
-                            $('.money_pay').css('display','none');
-                            $('#money_board').css('display','block');
-                            calcMoney  = true;
-                        });
                     }
                 }
 
             }
+
             function calcM(){
-                if (calcMoney == true) {
-                    money = money + teaPrice * seatNum;
-                    calcMoney = false;
+                if (seat1_m == true) {
+                    money = money + teaPrice;
+                    seat1_m = false;
+                }
+                if (seat2_m == true) {
+                    money = money + teaPrice;
+                    seat2_m = false;
+                }
+                if (seat3_m == true) {
+                    money = money + teaPrice;
+                    seat3_m = false;
+                }
+                if (seat4_m == true) {
+                    money = money + teaPrice;
+                    seat4_m = false;
                 }
             }
 
@@ -379,6 +439,7 @@
             var myVar3 = setInterval(setPara, 300);
             var myVar4 = setInterval(setMoneyPic, 300);
             var myVar4 = setInterval(calcM, 100);
+            var myVar4 = setInterval(brewInit, 300);
 
 
 
