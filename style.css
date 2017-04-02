@@ -547,6 +547,10 @@ header{
 	bottom: 30px;
 }
 
+#chat_brew{
+	display: none;
+}
+
 button {
 	width:200px;
 	height:40px;

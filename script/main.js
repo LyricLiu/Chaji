@@ -30,6 +30,9 @@
         var seat3_mg = false;
         var seat4_mg = false;
 
+        var iclick = 0;
+        var addOneHour = false;
+
 
         var timeNow = [0, 0];
 
@@ -140,6 +143,7 @@
             
             function drag(source,target,fn){
                 var $sourceClone;
+                $(source).css('cursor','pointer');
 
                 $(document).on('mousedown', source, function(ev){
                     $sourceClone = $(source).clone();
@@ -163,7 +167,6 @@
 
                 .on('mouseenter', target, function(){
                     if($sourceClone){
-                        console.log('mouseenter');
                         fn();
                         dragT = true;
                     }
@@ -171,7 +174,6 @@
 
                 .on('mouseup', target, function(){
                     if($sourceClone){
-                        console.log('mouseup');
                         $(source).css('display','block');
                     }  
                 })
@@ -299,6 +301,7 @@
                     $('#intro_chat').click(function(){
                         state = 2;
                         $("#guest_window").css('display', 'none');
+                        addOneHour = true;
                     })
                 }
 
@@ -409,7 +412,44 @@
                         } 
                     }
                 }
+                if (state == 2 ){
+                    $('#chat_window').css('display','block');
+                    var picg = 'url(./img/g' + guestIndex + '.png)';
+                    $('#chat_pic').css("background-image", picg);
+                    if (iclick == 0){
+                        $('#chat_content').html(Guest[guestIndex].words[0]);
+                        iclick = 1;
+                    }else if(iclick == 1){
+                        $('#chat_window').click(function(){
+                            $('#chat_content').html(Guest[guestIndex].words[1]);
+                            iclick = 2;
+                        })
+                    }else if(iclick == 2){
+                        $('#chat_window').click(function(){
+                            $('#chat_content').html(Guest[guestIndex].words[2]);
+                            iclick = 3;
+                        })
+                    }else if(iclick == 3){
+                        $('#chat_window').click(function(){
+                            $('#chat_content').html(Guest[guestIndex].words[3]);
+                            $('#chat_brew').css('display','block');
+                        })
+                    }
+                    $('#chat_brew').click(function(){
+                        state = 1;
+                        $("#chat_brew").css('display', 'none');
+                        $("#chat_window").css('display', 'none');
+                        iclick = 0;
+                    });
+                }
 
+            }
+
+            function addHour(){
+                if (addOneHour == true){
+                    timeNow[1]+=1;
+                    addOneHour = false;
+                }
             }
 
             function calcM(){
@@ -438,8 +478,9 @@
             var myVar2 = setInterval(setHeader, 300);
             var myVar3 = setInterval(setPara, 300);
             var myVar4 = setInterval(setMoneyPic, 300);
-            var myVar4 = setInterval(calcM, 100);
-            var myVar4 = setInterval(brewInit, 300);
+            var myVar5 = setInterval(calcM, 100);
+            var myVar6 = setInterval(brewInit, 300);
+            var myVar7 = setInterval(addHour, 300);
 
 
 
