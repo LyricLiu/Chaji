@@ -161,7 +161,9 @@
                         opacity: 1,
                         marginTop: '-50px',
                         marginLeft: '-50px',
-                        pointerEvents: 'none'
+                        pointerEvents: 'none',
+                        left: ev.pageX,
+                        top: ev.pageY
                     });
                 })
 
