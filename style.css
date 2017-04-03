@@ -682,6 +682,28 @@ button:hover{
 }
 
 
+#guild1{
+	position: absolute;
+	width:108px;
+	height:108px;
+	right:15%;
+	top:220px;
+	background-image: url(./img/guild1.png);
+	display: none;
+	z-index: 99999;
+}
+
+#guild2{
+	position: absolute;
+	width:138px;
+	height:87px;
+	right:20%;
+	top:500px;
+	background-image: url(./img/guild2.png);
+	display: none;
+	z-index: 99999;
+}
+
 
 
 
