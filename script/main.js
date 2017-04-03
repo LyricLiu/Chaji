@@ -317,12 +317,18 @@
                     iclick = 0;
                     $("#chat_brew").css('display', 'none');
                     if (brewProcess == 0){
+                        if (guestIndex == 0){
+                            $('#guild1').css('display','block');
+                        }
                         $('#teabox').css('cursor','pointer');
                         $('#teabox').click(function(){
                             $('#selectTea').css('display','block');
                             brewProcess = 1;
                         });
                     }else if(brewProcess ==1 ){
+                        if (guestIndex == 0){
+                        $('#guild1').css('display','none');
+                        }
                         if(puer.lock == false){
                             if(oolong.lock == false){
                                 $('#longjing').click(function(){
@@ -366,12 +372,18 @@
                             });
                         }
                     }else if(brewProcess == 2){
+                        if (guestIndex == 0){
+                            $('#guild2').css('display','block');
+                        }
                         drag('#leavesup','#pot',addLeaves);
                         if (dragT == true){
                             brewProcess = 3;
                             dragT = false;
                         }
                     }else if(brewProcess == 3){
+                        if (guestIndex == 0){
+                            $('#guild2').css('display','none');
+                        }
                         drag('#stove','#pot',addWaterLeaves);
                         if (dragT == true){
                             brewProcess = 4;
