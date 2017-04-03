@@ -219,6 +219,7 @@ header{
 	background-image: url(./img/money1.png);
 	z-index:9999;
 	display: none;
+	cursor: pointer;
 }
 
 /****************** teaset *********************/

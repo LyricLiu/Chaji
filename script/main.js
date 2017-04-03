@@ -32,20 +32,21 @@
 
         var iclick = 0;
         var addOneHour = false;
+        var brew_init = false;
 
 
         var timeNow = [0, 0];
 
         var teapet = new teaset('teapet', true, 3, 200, 800);
         var smelling = new teaset('smelling', true, 4, 0, 400);
-        var pitcher = new teaset('pitcher', true, 2, 0, 100);
+        var pitcher = new teaset('pitcher', true, 2, 0, 50);
         var dessert = new teaset('dessert', true, 3, 300, 1000);
         var decobuy1 = new teaset('decobuy1', true, 2, 30, 150);
         var decobuy2 = new teaset('decobuy2', true, 1, 50, 200);
         var puer = new teaset('puer', true, 0, 0, 50);
         var oolong = new teaset('oolong', true, 1, 0, 100);
-        var seat2 = new teaset('seat2', false, 0, 0, 30);
-        var seat3 = new teaset('seat3', false, 0, 0, 100);
+        var seat2 = new teaset('seat2', false, 0, 0, 100);
+        var seat3 = new teaset('seat3', false, 0, 0, 200);
         var seat4 = new teaset('seat4', true, 0, 0, 300);
 
 
@@ -66,10 +67,16 @@
         var g2_2 = "Alice: Oh, I am so lucky! You know today is my final day here, so I was wondering where to spend this most precious afternoon. Then I though I should experience tea culture since I am here and I found your tea shop. It’s so great, I like everything here, the furniture, the aroma …";
         var g2_3 = "You: Thank you! Actually, I am just a seven day owner. But I will try my best to improve this tiny space. Do you have any suggestions?";
         var g2_4 = "Alice: I am not a tea expert, but there is a market I want to recommend. I think you could but more tea sets from there, that would improve your business …";
+        var g3_0 = "Qin: It seems like here we have a new shop owner! Hi, I am Qin, an old customer of this tea shop. I own a silk shop across the street. Whenever there is no customer, I would come to this tea shop and have my favorite Puer tea. I am glad I will have a new flavor today. You are a novel, right? ";
+        var g3_1 = "You: Thanks for visiting! Yes, I am new here. Hope you don’t mind I have almost no tea knowledge. Why Pu’er is your favorite tea?";
+        var g3_2 = "Qin: You know I have to stay in my shop all day, so I feel tired sometimes. Pu’er tea has a stronger flavor than other tea which helps me reduce plaque. Also, it lowers the risk of heart disease and diabetes. It’s healthy. ";
+        var g3_3 = "You: Oh, that’s great! It sounds like you know a lot about tea. Can you give me any suggestion to improve my brewing skill?";
+        var g3_4 = "Qin: Definitely, let’s brew a tea, I will tell you how to do it. But, firstly, you need to buy a pitcher in the tea shop!";
         var g1 = new guest(['Fernando'], false, 0, g1_0 , []);
         var g2 = new guest(['Alice'], true, 0, g2_0, [g2_1, g2_2, g2_3, g2_4]);
+        var g3 = new guest(['Qin','Lily'],true, 1, g3_0, [g3_1, g3_2, g3_3, g3_4]);
 
-            var Guest = [g1, g2];
+            var Guest = [g1, g2, g3];
 
             function lockOn() {
                 var i;
@@ -254,7 +261,6 @@
             /*  state == 0 guest intro
                 state == 1 brew the tea
                 state == 2 chat
-                state == 3 pay money
             */
 
             function brewInit(){
@@ -306,6 +312,8 @@
                 }
 
                 if (state == 1) {
+                    iclick = 0;
+                    $("#chat_brew").css('display', 'none');
                     if (brewProcess == 0){
                         $('#teabox').css('cursor','pointer');
                         $('#teabox').click(function(){
@@ -432,14 +440,15 @@
                     }else if(iclick == 3){
                         $('#chat_window').click(function(){
                             $('#chat_content').html(Guest[guestIndex].words[3]);
-                            $('#chat_brew').css('display','block');
+                            iclick = 4;
                         })
+                    }else if(iclick == 4){
+                        $('#chat_brew').css('display','block');
                     }
                     $('#chat_brew').click(function(){
+                        $('#chat_brew').css('display','none');
                         state = 1;
-                        $("#chat_brew").css('display', 'none');
                         $("#chat_window").css('display', 'none');
-                        iclick = 0;
                     });
                 }
 
@@ -481,7 +490,5 @@
             var myVar5 = setInterval(calcM, 100);
             var myVar6 = setInterval(brewInit, 300);
             var myVar7 = setInterval(addHour, 300);
-
-
 
         })();
