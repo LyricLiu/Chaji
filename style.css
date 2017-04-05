@@ -704,6 +704,38 @@ button:hover{
 	z-index: 99999;
 }
 
+#guild3{
+	position: absolute;
+	width:144px;
+	height:90px;
+	left:15%;
+	top:300px;
+	background-image: url(./img/guild3.png);
+	display: none;
+	z-index: 99999;
+}
+
+#guild4{
+	position: absolute;
+	width:143px;
+	height:90px;
+	right:37%;
+	top:370px;
+	background-image: url(./img/guild4.png);
+	display: none;
+	z-index: 99999;
+}
+
+#guild5{
+	position: absolute;
+	width:144px;
+	height:90px;
+	right:31%;
+	top:170px;
+	background-image: url(./img/guild5.png);
+	display: none;
+	z-index: 99999;
+}
 
 
 

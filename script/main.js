@@ -33,7 +33,7 @@
         var iclick = 0;
         var addOneHour = false;
         var brew_init = false;
-
+        
 
         var timeNow = [0, 0];
 
@@ -131,7 +131,7 @@
                 } else {
                     $('#level').html("Expert");
                 }
-                $('#money').html(money);
+                $('#money').html(brewProcess);
             }
 
             function setMoneyPic(){
@@ -287,6 +287,7 @@
 
             function changeState(){
                 if (state == 0) {
+                    $('#guild5').css('display','none');
                     $("#guest_window").css('display', 'block');
                     $("#guest_intro").html(Guest[guestIndex].intro);
                     $('#seat1 p').html(Guest[guestIndex].name[0]);
@@ -325,9 +326,10 @@
                             $('#selectTea').css('display','block');
                             brewProcess = 1;
                         });
-                    }else if(brewProcess ==1 ){
+                    }else if(brewProcess ==1){
                         if (guestIndex == 0){
                         $('#guild1').css('display','none');
+                        dragT = false;
                         }
                         if(puer.lock == false){
                             if(oolong.lock == false){
@@ -383,6 +385,7 @@
                     }else if(brewProcess == 3){
                         if (guestIndex == 0){
                             $('#guild2').css('display','none');
+                            $('#guild3').css('display','block');
                         }
                         drag('#stove','#pot',addWaterLeaves);
                         if (dragT == true){
@@ -390,12 +393,20 @@
                             dragT = false;
                         }
                     }else if(brewProcess == 4){
+                        if (guestIndex == 0){
+                            $('#guild3').css('display','none');
+                            $('#guild4').css('display','block');
+                        }
                         drag('#pot','#cup',pourTeaCup);
                         if (dragT == true){
                             brewProcess = 5;
                             dragT = false;
                         }
                     }else if(brewProcess == 5){
+                        if (guestIndex == 0){
+                            $('#guild4').css('display','none');
+                            $('#guild5').css('display','block');
+                        }
                         if (seat4.lock == false) {
                             drag('#cup','#seat1pic',payMoney1);
                             drag('#cup','#seat2pic',payMoney2);
