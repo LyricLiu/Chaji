@@ -29,10 +29,6 @@
         var seat2_mg = false;
         var seat3_mg = false;
         var seat4_mg = false;
-        var bp2 = false;
-        var bp3 = false;
-        var bp4 = false;
-        var bp5 = false;
 
         var iclick = 0;
         var addOneHour = false;
@@ -152,53 +148,52 @@
             */
             var dragT = false;
             
-            function drag(source,target,fn,candrag){
+            function drag(source,target,fn){
                 var $sourceClone;
                 $(source).css('cursor','pointer');
-                if(candrag==true){
-                    $(document).on('mousedown', source, function(ev){
-                        $sourceClone = $(source).clone();
-                        $('body').append($sourceClone);
-                        $(source).css('display','none');
 
-                        $sourceClone.css({
-                            opacity: 1,
-                            marginTop: '-50px',
-                            marginLeft: '-50px',
-                            pointerEvents: 'none',
-                            left: ev.pageX,
-                            top: ev.pageY
-                        });
-                    })
+                $(document).on('mousedown', source, function(ev){
+                    $sourceClone = $(source).clone();
+                    $('body').append($sourceClone);
+                    $(source).css('display','none');
 
-                    .on('mousemove', function(ev){
-                        $sourceClone && $sourceClone.css({
-                            left: ev.pageX,
-                            top: ev.pageY
-                        });
-                    })
+                    $sourceClone.css({
+                        opacity: 1,
+                        marginTop: '-50px',
+                        marginLeft: '-50px',
+                        pointerEvents: 'none',
+                        left: ev.pageX,
+                        top: ev.pageY
+                    });
+                })
 
-                    .on('mouseenter', target, function(){
-                        if($sourceClone){
-                            fn();
-                            dragT = true;
-                        }
-                    })
+                .on('mousemove', function(ev){
+                    $sourceClone && $sourceClone.css({
+                        left: ev.pageX,
+                        top: ev.pageY
+                    });
+                })
 
-                    .on('mouseup', target, function(){
-                        if($sourceClone){
-                            $(source).css('display','block');
-                        }  
-                    })
+                .on('mouseenter', target, function(){
+                    if($sourceClone){
+                        fn();
+                        dragT = true;
+                    }
+                })
 
-                    .on('mouseup', function(){
-                        if($sourceClone){
-                        $sourceClone.remove();
-                        $sourceClone = null;
+                .on('mouseup', target, function(){
+                    if($sourceClone){
                         $(source).css('display','block');
-                        }
-                    })
-                }
+                    }  
+                })
+
+                .on('mouseup', function(){
+                    if($sourceClone){
+                    $sourceClone.remove();
+                    $sourceClone = null;
+                    $(source).css('display','block');
+                    }
+                })
             }
 
             /****************** Brew Animation *********************/
@@ -269,12 +264,6 @@
                 state == 1 brew the tea
                 state == 2 chat
             */
-            function dragCheck(){
-                drag('#leavesup','#pot',addLeaves,bp2);
-                drag('#stove','#pot',addWaterLeaves,bp3);
-                drag('#pot','#cup',pourTeaCup,bp4);
-            }
-            
 
             function brewInit(){
                     if(brew_init == true){
@@ -293,13 +282,6 @@
                         guestIndex += 1;
                         brewProcess = 0; 
                         brew_init = false;
-                        bp2 = false;
-                        bp3 = false;
-                        bp4 = false;
-                        bp5 = false;
-                        drag('#leavesup','#pot',addLeaves,bp2);
-                        drag('#stove','#pot',addWaterLeaves,bp3);
-                        drag('#pot','#cup',pourTeaCup,bp4);
                     }
                 }
 
@@ -388,7 +370,6 @@
                                 tea = 0;
                                 $("#selectTea").css('display', 'none');
                                 brewProcess = 2;
-                                bp2 = true;
                                 $('#leavesup').css('display', 'block');
                             });
                         }
@@ -396,21 +377,19 @@
                         if (guestIndex == 0){
                             $('#guild2').css('display','block');
                         }
+                        drag('#leavesup','#pot',addLeaves);
                         if (dragT == true){
                             brewProcess = 3;
                             dragT = false;
-                            bp2 = false;
-                            bp3 = true;
                         }
                     }else if(brewProcess == 3){
                         if (guestIndex == 0){
                             $('#guild2').css('display','none');
                             $('#guild3').css('display','block');
                         }
+                        drag('#stove','#pot',addWaterLeaves);
                         if (dragT == true){
                             brewProcess = 4;
-                            bp3 = false;
-                            bp4 = true;
                             dragT = false;
                         }
                     }else if(brewProcess == 4){
@@ -418,12 +397,10 @@
                             $('#guild3').css('display','none');
                             $('#guild4').css('display','block');
                         }
-                        
+                        drag('#pot','#cup',pourTeaCup);
                         if (dragT == true){
                             brewProcess = 5;
                             dragT = false;
-                            bp4 = false;
-                            bp5 = true;
                         }
                     }else if(brewProcess == 5){
                         if (guestIndex == 0){
@@ -431,39 +408,39 @@
                             $('#guild5').css('display','block');
                         }
                         if (seat4.lock == false) {
-                            drag('#cup','#seat1pic',payMoney1,bp5);
-                            drag('#cup','#seat2pic',payMoney2,bp5);
-                            drag('#cup','#seat3pic',payMoney3,bp5);
-                            drag('#cup','#seat4pic',payMoney4,bp5);
+                            drag('#cup','#seat1pic',payMoney1);
+                            drag('#cup','#seat2pic',payMoney2);
+                            drag('#cup','#seat3pic',payMoney3);
+                            drag('#cup','#seat4pic',payMoney4);
                             getMoney();
                             if ((seat1_tea == true) && (seat2_tea == true) && (seat3_tea == true) && (seat4_tea == true) && (seat1_mg == true) && (seat2_mg == true) && (seat3_mg == true) && (seat4_mg == true)){
-                                brew_init = true;
                                 state = 0;
+                                brew_init = true;
                             }
                         }else if(seat3.lock == false){
-                            drag('#cup','#seat1pic',payMoney1,bp5);
-                            drag('#cup','#seat2pic',payMoney2,bp5);
-                            drag('#cup','#seat3pic',payMoney3,bp5);
+                            drag('#cup','#seat1pic',payMoney1);
+                            drag('#cup','#seat2pic',payMoney2);
+                            drag('#cup','#seat3pic',payMoney3);
                             getMoney();
                             console.log(seat1_tea);
                             if (seat1_tea == true && seat2_tea == true && seat3_tea == true && seat1_mg == true && seat2_mg == true && seat3_mg == true){
-                                brew_init = true;
                                 state = 0;
+                                brew_init = true;
                             }
                         }else if(seat2.lock == false){
-                            drag('#cup','#seat1pic',payMoney1,bp5);
-                            drag('#cup','#seat2pic',payMoney2,bp5);
+                            drag('#cup','#seat1pic',payMoney1);
+                            drag('#cup','#seat2pic',payMoney2);
                             getMoney();
                             if (seat1_tea == true && seat2_tea == true && seat1_mg == true && seat2_mg == true){
-                                brew_init = true;
                                 state = 0;
+                                brew_init = true;
                             }
                         }else{
-                            drag('#cup','#seat1pic',payMoney1,bp5);
+                            drag('#cup','#seat1pic',payMoney1);
                             getMoney();
                             if (seat1_tea == true && seat1_mg == true){
-                                brew_init = true;
                                 state = 0;
+                                brew_init = true;
                             }
                         } 
                     }
@@ -538,6 +515,5 @@
             var myVar5 = setInterval(calcM, 100);
             var myVar6 = setInterval(brewInit, 300);
             var myVar7 = setInterval(addHour, 300);
-            var myVar8 = setInterval(dragCheck, 300);
 
         })();
