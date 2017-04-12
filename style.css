@@ -6,6 +6,9 @@
 body{
 	font-family: brandon-grotesque, sans-serif;
 	background-color: #dad4c5;
+	-moz-user-select: none; 
+	-khtml-user-select: none; 
+	user-select: none;
 }
 
 h2{
@@ -728,8 +731,8 @@ button:hover{
 
 #guild5{
 	position: absolute;
-	width:144px;
-	height:90px;
+	width:247px;
+	height:89px;
 	right:31%;
 	top:170px;
 	background-image: url(./img/guild5.png);

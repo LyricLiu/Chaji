@@ -72,7 +72,7 @@
         var g3_2 = "Qin: You know I have to stay in my shop all day, so I feel tired sometimes. Pu’er tea has a stronger flavor than other tea which helps me reduce plaque. Also, it lowers the risk of heart disease and diabetes. It’s healthy. ";
         var g3_3 = "You: Oh, that’s great! It sounds like you know a lot about tea. Can you give me any suggestion to improve my brewing skill?";
         var g3_4 = "Qin: Definitely, let’s brew a tea, I will tell you how to do it. But, firstly, you need to buy a pitcher in the tea shop!";
-        var g1 = new guest(['Mr.Li'], false, 0, g1_0 , []);
+        var g1 = new guest(['Fernando'], false, 0, g1_0 , []);
         var g2 = new guest(['Alice'], true, 0, g2_0, [g2_1, g2_2, g2_3, g2_4]);
         var g3 = new guest(['Qin','Lily'],true, 1, g3_0, [g3_1, g3_2, g3_3, g3_4]);
 
@@ -121,7 +121,7 @@
 
             function setPara() {
                 if (level == 0) {
-                    $('#level').html("Novel");
+                    $('#level').html("Novice");
                 } else if (level == 1) {
                     $('#level').html("Beginner");
                 } else if (level == 2) {
