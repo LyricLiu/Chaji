@@ -31,7 +31,7 @@ header{
 	width:261px;
 	height:131px;
 	background-image: url(./img/header.png);
-	z-index:999;
+	z-index:9999;
 }
 
 #header_day{
@@ -741,7 +741,98 @@ button:hover{
 	z-index: 99999;
 }
 
+/*************** shop window *****************/
 
+#shop_window{
+	display: none;
+}
+
+#cross{
+	position: absolute;
+	width:62px;
+	height: 63px;
+	top:-20px;
+	right:-20px;
+	background-image: url(./img/cross.png);
+	cursor: pointer;
+}
+
+#shop_window{
+	position: absolute;
+	width:1000px;
+	left:calc(50% - 500px);
+	top:100px;
+	height:500px;
+	z-index: 9999;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+#shop_sheet{
+	width:1000px;
+	height:500px;
+	overflow: scroll;
+	background-color: #dad4c5;
+}
+
+#shop_scroll{
+	width:900px;
+	margin-left:50px;
+	height:1400px;
+}
+
+.sell{
+	position: relative;
+	float:left;
+	width:300px;
+	height:300px;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+#shop_scroll p{
+	color:#404763;
+	position: absolute;
+	top:230px;
+	width:250px;
+}
+
+.sell_buy{
+	position: absolute;
+	width:84px;
+	height:35px;
+	left:108px;
+	top:290px;
+	background-image: url(./img/sell_buy.png);
+	display: none;
+	cursor: pointer;
+}
+
+.sell_lock{
+	position: absolute;
+	width:84px;
+	height:35px;
+	left:108px;
+	top:290px;
+	background-image: url(./img/sell_lock.png);
+}
+
+.sell_have{
+	position: absolute;
+	width:84px;
+	height:35px;
+	left:108px;
+	top:290px;
+	background-image: url(./img/have.png);
+	display: none;
+}
+
+.shop_price{
+	position: absolute;
+	top:45px;
+	left:15px;
+	font-size: 35px;
+	color:#515776;
+}
 
 
 

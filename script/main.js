@@ -17,7 +17,7 @@
     $('#cup').attr('drag', 'false');
     $('#leavesup').attr('drag', 'false');
 
-    var level = 0;
+    var level = 2;
     var money = 0;
     var tea = 0;
     var guestIndex = 0;
@@ -34,13 +34,17 @@
 
     var teapet = new teaset('teapet', true, 3, 200, 800);
     var smelling = new teaset('smelling', true, 4, 0, 400);
-    var pitcher = new teaset('pitcher', true, 2, 0, 50);
+    var pitcher = new teaset('pitcher', true, 1, 30, 20);
     var dessert = new teaset('dessert', true, 3, 300, 1000);
-    var decobuy1 = new teaset('decobuy1', true, 2, 30, 150);
-    var decobuy2 = new teaset('decobuy2', true, 1, 50, 200);
-    var puer = new teaset('puer', true, 0, 0, 50);
-    var oolong = new teaset('oolong', true, 1, 0, 100);
-    var seat2 = new teaset('seat2', false, 0, 0, 100);
+    var decobuy1 = new teaset('decobuy1', true, 2, 0, 150);
+    var decobuy2 = new teaset('decobuy2', true, 2, 0, 350);
+    var puer = new teaset('puer', true, 0, 0, 20);
+    var oolong = new teaset('oolong', true, 1, 0, 50);
+
+    var leaves = new teaset('leaves', false, 3, 100, 600);
+    var highpot = new teaset('leaves', false, 4, 800, 2000);
+
+    var seat2 = new teaset('seat2', true, 0, 0, 100);
     var seat3 = new teaset('seat3', false, 0, 0, 200);
     var seat4 = new teaset('seat4', true, 0, 0, 300);
 
@@ -127,7 +131,7 @@
         } else {
             $('#level').html("Expert");
         }
-        $('#money').html(guestIndex);
+        $('#money').html(money);
     }
 
     function setMoneyPic() {
@@ -137,6 +141,144 @@
             $('.money_pay').css('background-image', 'url(./img/money3.png)');
         }
     }
+
+    /****************** Set Shop ********************/
+    $('#sell1').on("click", function() {
+        if(money>=20){
+            puer.lock = false;
+            money -= 20;
+            setPara();
+            lockOn();
+            $('#sell1h').css('display', 'block');
+        }
+    })
+
+    $('#sell2').on("click", function() {
+        if(money>=50){
+            oolong.lock = false;
+            money -= 50;
+            setPara();
+            lockOn();
+            $('#sell2h').css('display', 'block');
+        }
+    })
+
+    $('#sell3').on("click", function() {
+        if(money>=20){
+            pitcher.lock = false;
+            money -= 20;
+            setPara();
+            lockOn();
+            teaPrice += 30;
+            $('#sell3h').css('display', 'block');
+        }
+    })
+
+    $('#sell4').on("click", function() {
+        if(money>=150){
+            seat2.lock = false;
+            money -= 150;
+            setPara();
+            lockOn();
+            $('#sell4h').css('display', 'block');
+        }
+    })
+
+    $('#sell5').on("click", function() {
+        if(money>=350){
+            seat3.lock = false;
+            money -= 350;
+            setPara();
+            lockOn();
+            $('#sell5h').css('display', 'block');
+        }
+    })
+
+    $('#sell6').on("click", function() {
+        if(money>=800){
+            seat4.lock = false;
+            money -= 800;
+            setPara();
+            lockOn();
+            teaPrice += 150;
+            $('#sell6h').css('display', 'block');
+        }
+    })
+
+    $('#sell7').on("click", function() {
+        if(money>=1000){
+            money -= 1000;
+            dessert.lock = false;
+            setPara();
+            lockOn();
+            teaPrice += 300;
+            $('#sell7h').css('display', 'block');
+        }
+    })
+
+    $('#sell8').on("click", function() {
+        if(money>=600){
+            money -= 600;
+            //change picture;
+            setPara();
+            lockOn();
+            teaPrice += 100;
+            $('#sell8h').css('display', 'block');
+        }
+    })
+
+    $('#sell9').on("click", function() {
+        if(money>=400){
+            money -= 400;
+            smelling.lock = false;
+            setPara();
+            lockOn();
+            teaPrice += 50;
+            $('#sell9h').css('display', 'block');
+        }
+    })
+
+    $('#sell10').on("click", function() {
+        if(money>=2000){
+            money -= 2000;
+            //change picture;
+            setPara();
+            lockOn();
+            teaPrice += 800;
+            $('#sell9h').css('display', 'block');
+        }
+    })
+
+
+    function setShopLock() {
+        if(level==0){
+            $('#sell1').css('display', 'block');
+        }else if(level==1){
+            $('#sell2').css('display', 'block');
+            $('#sell3').css('display', 'block');
+        }else if(level==2){
+            $('#sell4').css('display', 'block');
+            $('#sell5').css('display', 'block');
+        }else if(level==3){
+            $('#sell6').css('display', 'block');
+            $('#sell7').css('display', 'block');
+            $('#sell8').css('display', 'block');
+        }else if(level==4){
+            $('#sell9').css('display', 'block');
+            $('#sell10').css('display', 'block');
+        }
+    }
+
+    $('#icon3').on("click", function() {
+        setShopLock();
+        $('#shop_window').css('display', 'block');
+    })
+
+    $('#cross').on("click", function() {
+        $('#shop_window').css('display', 'none');
+    })
+
+
 
     /***************** Drag Function *********************/
     /*

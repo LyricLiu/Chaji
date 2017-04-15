@@ -41,8 +41,8 @@
         var smelling = new teaset('smelling', true, 4, 0, 400);
         var pitcher = new teaset('pitcher', true, 2, 0, 50);
         var dessert = new teaset('dessert', true, 3, 300, 1000);
-        var decobuy1 = new teaset('decobuy1', true, 2, 30, 150);
-        var decobuy2 = new teaset('decobuy2', true, 1, 50, 200);
+        var decobuy1 = new teaset('decobuy1', true, 1, 30, 150);
+        var decobuy2 = new teaset('decobuy2', true, 2, 50, 200);
         var puer = new teaset('puer', true, 0, 0, 50);
         var oolong = new teaset('oolong', true, 1, 0, 100);
         var seat2 = new teaset('seat2', false, 0, 0, 100);
