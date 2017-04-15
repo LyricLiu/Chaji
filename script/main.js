@@ -17,12 +17,11 @@
     $('#cup').attr('drag', 'false');
     $('#leavesup').attr('drag', 'false');
 
-    var level = 2;
+    var level = 0;
     var money = 0;
     var tea = 0;
     var guestIndex = 0;
     var teaPrice = 20;
-    var seatNum = 1;
     var dragT = false;
 
     var seat1_mg = false;
@@ -44,8 +43,8 @@
     var leaves = new teaset('leaves', false, 3, 100, 600);
     var highpot = new teaset('leaves', false, 4, 800, 2000);
 
-    var seat2 = new teaset('seat2', true, 0, 0, 100);
-    var seat3 = new teaset('seat3', false, 0, 0, 200);
+    var seat2 = new teaset('seat2', false, 0, 0, 100);
+    var seat3 = new teaset('seat3', true, 0, 0, 200);
     var seat4 = new teaset('seat4', true, 0, 0, 300);
 
     var teaset_lock = [teapet, smelling, pitcher, dessert, decobuy1, decobuy2, puer, oolong];
@@ -70,8 +69,8 @@
     var g2_2 = "Qin: You know I have to stay in my shop all day, so I feel tired sometimes. Pu’er tea has a stronger flavor than other tea which helps me reduce plaque. Also, it lowers the risk of heart disease and diabetes. It’s healthy. ";
     var g2_3 = "You: Oh, that’s great! It sounds like you know a lot about tea. Can you give me any suggestion to improve my brewing skill?";
     var g2_4 = "Qin: Definitely, let’s brew a tea, I will tell you how to do it. But, firstly, you need to buy a pitcher in the tea shop!";
-    var g0 = new guest(['Fernando'], false, 0, g0_0, []);
-    var g1 = new guest(['Alice'], true, 0, g1_0, [g1_1, g1_2, g1_3, g1_4]);
+    var g0 = new guest(['Fernando'], false, 3, g0_0, []);
+    var g1 = new guest(['Alice'], true, 3, g1_0, [g1_1, g1_2, g1_3, g1_4]);
     var g2 = new guest(['Qin', 'Lily'], true, 1, g2_0, [g2_1, g2_2, g2_3, g2_4]);
 
     var Guest = [g0, g1, g2];
@@ -418,14 +417,24 @@
         }
     }
 
+    function rightTea(){
+        if(Guest[guestIndex].tea == tea){
+            money+=teaPrice;
+            money+=50;
+            setPara();
+        }else{
+            money+=teaPrice;
+            setPara();
+        }
+    }
+
     function getMoney() {
         $('#cup').attr('drag', 'false');
     }
 
     $('#seat1_money').on("click", function() {
         if (seat1_mg == true) {
-            money += teaPrice;
-            setPara();
+            rightTea();
         }
         seat1_mg = false;
         $('#seat1_money').css('display', 'none');
@@ -437,8 +446,7 @@
     });
     $('#seat2_money').on("click", function() {
         if (seat2_mg == true) {
-            money += teaPrice;
-            setPara();
+            rightTea();
         }
         seat2_mg = false;
         $('#seat2_money').css('display', 'none');
@@ -449,8 +457,7 @@
     });
     $('#seat3_money').on("click", function() {
         if (seat3_mg == true) {
-            money += teaPrice;
-            setPara();
+           rightTea();
         }
         seat3_mg = false;
         $('#seat3_money').css('display', 'none');
@@ -461,8 +468,7 @@
     });
     $('#seat4_money').on("click", function() {
         if (seat4_mg == true) {
-            money += teaPrice;
-            setPara();
+            rightTea();
         }
         seat4_mg = false;
         $('#seat4_money').css('display', 'none');
@@ -584,11 +590,18 @@
         }else if (iclick == 3){
             $('#chat_content').html(Guest[guestIndex].words[iclick]);
             $('#chat_brew').css('display', 'block');
+            if(guestIndex == 2){
+                level+=1;
+                $('#shop_window').css('display', 'block');
+                setShopLock();
+            }
         }
     })
 
     $('#chat_brew').on("click",function() {
+        iclick = 0;
         $("#chat_window").css('display', 'none');
+        $('#shop_window').css('display', 'none');
         brew();
     });
 
