@@ -64,7 +64,7 @@
     var g1_1 = "You: Hi, Alice! I am glad to meet you! You are my first guest!";
     var g1_2 = "Alice: Oh, I am so lucky! You know today is my final day here, so I was wondering where to spend this most precious afternoon. Then I though I should experience tea culture since I am here and I found your tea shop. It’s so great, I like everything here, the furniture, the aroma …";
     var g1_3 = "You: Thank you! Actually, I am just a seven day owner. But I will try my best to improve this tiny space. Do you have any suggestions?";
-    var g1_4 = "Alice: I am not a tea expert, but there is a market I want to recommend. I think you could but more tea sets from there, that would improve your business …";
+    var g1_4 = "Alice: I am not a tea expert, but there is a market I want to recommend. I think you could buy more tea sets from there, that would improve your business …";
     var g2_0 = "Qin: It seems like here we have a new shop owner! Hi, I am Qin, an old customer of this tea shop. I own a silk shop across the street. Whenever there is no customer, I would come to this tea shop and have my favorite Puer tea. I am glad I will have a new flavor today. You are a novice, right? ";
     var g2_1 = "You: Thanks for visiting! Yes, I am new here. Hope you don’t mind I have almost no tea knowledge. Why Pu’er is your favorite tea?";
     var g2_2 = "Qin: You know I have to stay in my shop all day, so I feel tired sometimes. Pu’er tea has a stronger flavor than other tea which helps me reduce plaque. Also, it lowers the risk of heart disease and diabetes. It’s healthy. ";
@@ -576,33 +576,25 @@
     }
 
     /****************** chat section  *******************/
-    function showChat() {
-        if (iclick == 1) {
-            $('#chat_content').html(Guest[guestIndex].words[1]);
-        } else if (iclick == 2) {
-            $('#chat_content').html(Guest[guestIndex].words[2]);
-        } else if (iclick == 3) {
-            $('#chat_content').html(Guest[guestIndex].words[3]);
-            $('#chat_brew').css('display', 'block');
-            if (guestIndex == 2) {
-                //add open shop window;
-            }
-        }
-    }
 
     $('#chat_window').on("click", function() {
-        iclick += 1;
-        showChat();
+        if(iclick<3){
+            iclick += 1;
+            $('#chat_content').html(Guest[guestIndex].words[iclick]);
+        }else if (iclick == 3){
+            $('#chat_content').html(Guest[guestIndex].words[iclick]);
+            $('#chat_brew').css('display', 'block');
+        }
     })
 
     $('#chat_brew').on("click",function() {
-        iclick = 0;
-        $('#chat_brew').css('display', 'none');
         $("#chat_window").css('display', 'none');
         brew();
     });
 
     function guestChat() {
+        iclick = 0;
+        $('#chat_brew').css('display', 'none');
         $('#chat_window').css('display', 'block');
         var picg = 'url(./img/g' + guestIndex + '.png)';
         $('#chat_pic').css("background-image", picg);
