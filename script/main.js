@@ -16,6 +16,7 @@
     $('#pot').attr('drag', 'false');
     $('#cup').attr('drag', 'false');
     $('#leavesup').attr('drag', 'false');
+    $('#pitcher').attr('drag', 'false');
 
     var level = 0;
     var money = 0;
@@ -76,6 +77,7 @@
     var Guest = [g0, g1, g2];
 
     var iclick = 0;
+    var brew2_first = true;
 
     function lockOn() {
         var i;
@@ -143,7 +145,7 @@
 
     /****************** Set Shop ********************/
     $('#sell1').on("click", function() {
-        if(money>=20){
+        if (money >= 20) {
             puer.lock = false;
             money -= 20;
             setPara();
@@ -153,7 +155,7 @@
     })
 
     $('#sell2').on("click", function() {
-        if(money>=50){
+        if (money >= 50) {
             oolong.lock = false;
             money -= 50;
             setPara();
@@ -163,7 +165,7 @@
     })
 
     $('#sell3').on("click", function() {
-        if(money>=20){
+        if (money >= 20) {
             pitcher.lock = false;
             money -= 20;
             setPara();
@@ -174,7 +176,7 @@
     })
 
     $('#sell4').on("click", function() {
-        if(money>=150){
+        if (money >= 150) {
             seat2.lock = false;
             money -= 150;
             setPara();
@@ -184,7 +186,7 @@
     })
 
     $('#sell5').on("click", function() {
-        if(money>=350){
+        if (money >= 350) {
             seat3.lock = false;
             money -= 350;
             setPara();
@@ -194,7 +196,7 @@
     })
 
     $('#sell6').on("click", function() {
-        if(money>=800){
+        if (money >= 800) {
             seat4.lock = false;
             money -= 800;
             setPara();
@@ -205,7 +207,7 @@
     })
 
     $('#sell7').on("click", function() {
-        if(money>=1000){
+        if (money >= 1000) {
             money -= 1000;
             dessert.lock = false;
             setPara();
@@ -216,7 +218,7 @@
     })
 
     $('#sell8').on("click", function() {
-        if(money>=600){
+        if (money >= 600) {
             money -= 600;
             //change picture;
             setPara();
@@ -227,7 +229,7 @@
     })
 
     $('#sell9').on("click", function() {
-        if(money>=400){
+        if (money >= 400) {
             money -= 400;
             smelling.lock = false;
             setPara();
@@ -238,7 +240,7 @@
     })
 
     $('#sell10').on("click", function() {
-        if(money>=2000){
+        if (money >= 2000) {
             money -= 2000;
             //change picture;
             setPara();
@@ -250,19 +252,19 @@
 
 
     function setShopLock() {
-        if(level==0){
+        if (level == 0) {
             $('#sell1').css('display', 'block');
-        }else if(level==1){
+        } else if (level == 1) {
             $('#sell2').css('display', 'block');
             $('#sell3').css('display', 'block');
-        }else if(level==2){
+        } else if (level == 2) {
             $('#sell4').css('display', 'block');
             $('#sell5').css('display', 'block');
-        }else if(level==3){
+        } else if (level == 3) {
             $('#sell6').css('display', 'block');
             $('#sell7').css('display', 'block');
             $('#sell8').css('display', 'block');
-        }else if(level==4){
+        } else if (level == 4) {
             $('#sell9').css('display', 'block');
             $('#sell10').css('display', 'block');
         }
@@ -277,6 +279,32 @@
         $('#shop_window').css('display', 'none');
     })
 
+    /************* shake function **************/
+    jQuery.fn.shake = function() {
+        this.each(function(i) {
+            $(this).css({
+                "position": "absolute"
+            });
+            for (var x = 1; x <= 2; x++) {
+                $(this).animate({
+                    left: 545
+                }, 10).animate({
+                    left: 535
+                }, 50).animate({
+                    left: 535
+                }, 10).animate({
+                    left: 530
+                }, 50).animate({
+                    left: 545
+                }, 50).animate({
+                    left: 540
+                }, 50).animate({
+                    left: 545
+                }, 50);
+            }
+        });
+        return this;
+    }
 
 
     /***************** Drag Function *********************/
@@ -362,6 +390,9 @@
             $('#guild3').css('display', 'none');
             $('#guild4').css('display', 'block');
         }
+        if(brew2_first ==true && level==1) {
+            $('#guild6').css('display', 'block');
+        }
         $('#stove').attr('drag', 'false');
         $('#pot').attr('drag', 'true');
     }
@@ -417,13 +448,13 @@
         }
     }
 
-    function rightTea(){
-        if(Guest[guestIndex].tea == tea){
-            money+=teaPrice;
-            money+=50;
+    function rightTea() {
+        if (Guest[guestIndex].tea == tea) {
+            money += teaPrice;
+            money += 50;
             setPara();
-        }else{
-            money+=teaPrice;
+        } else {
+            money += teaPrice;
             setPara();
         }
     }
@@ -457,7 +488,7 @@
     });
     $('#seat3_money').on("click", function() {
         if (seat3_mg == true) {
-           rightTea();
+            rightTea();
         }
         seat3_mg = false;
         $('#seat3_money').css('display', 'none');
@@ -477,6 +508,47 @@
             guestIntro();
         }
     })
+
+    /**** brew 2*****/
+
+    function pourTeaPitcher() {
+        if (tea == 0) {
+            $('#pitcher').css('background-image', 'url(./img/pitcher0.png)');
+        } else if (tea == 1) {
+            $('#pitcher').css('background-image', 'url(./img/pitcher1.png)');
+        } else if (tea == 2) {
+            $('#pitcher').css('background-image', 'url(./img/pitcher2.png)');
+        }
+        if(brew2_first ==true) {
+            $('#guild6').css('display', 'none');
+            $('#guild7').css('display', 'block');
+        }
+        setTimeout(function() { $('#pitcher').shake(); }, 400);
+        $('#pot').attr('drag', 'false');
+        $('#pitcher').attr('drag', 'true');
+    }
+
+    function pourTeaCup1() {
+        if (tea == 0) {
+            $('#cup').css('background-image', 'url(./img/cup_1.png)');
+        } else if (tea == 1) {
+            $('#cup').css('background-image', 'url(./img/cup_2.png)');
+        } else if (tea == 2) {
+            $('#cup').css('background-image', 'url(./img/cup_3.png)');
+        }
+        $('#pitcher').css('background-image', 'url(./img/pitcher.png)');
+        $('#pitcher').css('left', '38%');
+        if(brew2_first ==true) {
+            $('#guild7').css('display', 'none');
+            brew2_first = false;
+        }
+        if (guestIndex == 0) {
+            $('#guild4').css('display', 'none');
+            $('#guild5').css('display', 'block');
+        }
+        $('#pitcher').attr('drag', 'false');
+        $('#cup').attr('drag', 'true');
+    }
 
     /******************* Game Section **********************/
     function brewInit() {
@@ -502,6 +574,33 @@
         drag('#cup', '#seat4pic', payMoney);
     }
 
+    function brew2() {
+        drag('#leavesup', '#pot', addLeaves);
+        drag('#stove', '#pot', addWaterLeaves);
+        if (pitcher.lock == false) {
+            drag('#pot', '#pitcher', pourTeaPitcher);
+        }
+        drag('#pitcher', '#cup', pourTeaCup1);
+        drag('#cup', '#seat1pic', payMoney);
+        drag('#cup', '#seat2pic', payMoney);
+        drag('#cup', '#seat3pic', payMoney);
+        drag('#cup', '#seat4pic', payMoney);
+    }
+
+    function decideBrew() {
+        if (level == 0) {
+            brew1();
+        } else if (level == 1) {
+            brew2();
+        } else if (level == 2) {
+            brew3();
+        } else if (level == 3) {
+            brew4();
+        } else if (level == 4) {
+            brew5();
+        }
+    }
+
 
 
     function brew() {
@@ -519,7 +618,7 @@
                     tea = 0;
                     $("#selectTea").css('display', 'none');
                     $('#leavesup').css('display', 'block');
-                    brew1();
+                    decideBrew();
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
@@ -529,7 +628,7 @@
                     tea = 1;
                     $("#selectTea").css('display', 'none');
                     $('#leavesup').css('display', 'block');
-                    brew1();
+                    decideBrew();
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
@@ -539,7 +638,7 @@
                     tea = 2;
                     $("#selectTea").css('display', 'none');
                     $('#leavesup').css('display', 'block');
-                    brew1();
+                    decideBrew();
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
@@ -550,7 +649,7 @@
                     tea = 0;
                     $("#selectTea").css('display', 'none');
                     $('#leavesup').css('display', 'block');
-                    brew1();
+                    decideBrew();
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
@@ -560,7 +659,7 @@
                     tea = 1;
                     $("#selectTea").css('display', 'none');
                     $('#leavesup').css('display', 'block');
-                    brew1();
+                    decideBrew();
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
@@ -576,7 +675,7 @@
                     $('#guild2').css('display', 'block');
                 }
                 $('#leavesup').attr('drag', 'true');
-                brew1();
+                decideBrew();
             });
         }
     }
@@ -584,21 +683,21 @@
     /****************** chat section  *******************/
 
     $('#chat_window').on("click", function() {
-        if(iclick<3){
+        if (iclick < 3) {
             iclick += 1;
             $('#chat_content').html(Guest[guestIndex].words[iclick]);
-        }else if (iclick == 3){
+        } else if (iclick == 3) {
             $('#chat_content').html(Guest[guestIndex].words[iclick]);
             $('#chat_brew').css('display', 'block');
-            if(guestIndex == 2){
-                level+=1;
+            if (guestIndex == 2) {
+                level += 1;
                 $('#shop_window').css('display', 'block');
                 setShopLock();
             }
         }
     })
 
-    $('#chat_brew').on("click",function() {
+    $('#chat_brew').on("click", function() {
         iclick = 0;
         $("#chat_window").css('display', 'none');
         $('#shop_window').css('display', 'none');
