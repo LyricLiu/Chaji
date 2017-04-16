@@ -70,11 +70,26 @@
     var g2_2 = "Qin: You know I have to stay in my shop all day, so I feel tired sometimes. Pu’er tea has a stronger flavor than other tea which helps me reduce plaque. Also, it lowers the risk of heart disease and diabetes. It’s healthy. ";
     var g2_3 = "You: Oh, that’s great! It sounds like you know a lot about tea. Can you give me any suggestion to improve my brewing skill?";
     var g2_4 = "Qin: Definitely, let’s brew a tea, I will tell you how to do it. But, firstly, you need to buy a pitcher in the tea shop!";
-    var g0 = new guest(['Fernando'], false, 3, g0_0, []);
+    var g3_0 = "How’s everything going? I am your neighbor and I have been living in this town for ten years. But I have never been in this shop. Don’t mind, it’s not your fault. I don’t like the former shop owner. Anyway, may I have a cup of Oolong? Thanks!";
+    var g3_1 = "You: No problem, Mr. Wang. I am wondering what makes you dislike Mr. Li. ";
+    var g3_2 = "Mr. Wang: Um, actually I have never met him. I just heard some bad things about him. It is said that, he never wash the tea leaves before serving the guest. Also, he didn’t use the pitcher. You know the pitcher is impotent to make the tea taste good.";
+    var g3_3 = "You: Oh, I apologize that I am a beginner, I know nothing about what you said. Do you mind teach me?";
+    var g3_4 = "Mr. Wang: Ok, click the brew button, make sure you have a pitcher and follow me!";
+    var g4_0 = "I am gland to see there is a tea shop here! It’s hot outside, I am thirsty now. Hi, my name is Qiu Qiu. I want a cup of tea to drink. Do you have any recommendation that is not that bitter and can make me feel relaxed?";
+    var g4_1 = "You: Hi, Qiu Qiu. Nice to meet you! I would like to recommend Long Jing tea to you. It is a kind of green tea. The flavor is not as strong as Oolong and Puer. I bet you would like it.";
+    var g4_2 = "Qiu Qiu: That would be great!";
+    var g4_3 = "You: Haha, you know green tea is my favorite one. I read from a book that it can also improve bran function and promote weight loss.";
+    var g4_4 = "Really? I cannot wait to taste it!";
+
+
+    var g0 = new guest(['Mr.Li'], false, 3, g0_0, []);
     var g1 = new guest(['Alice'], true, 3, g1_0, [g1_1, g1_2, g1_3, g1_4]);
     var g2 = new guest(['Qin', 'Lily'], true, 1, g2_0, [g2_1, g2_2, g2_3, g2_4]);
+    var g3 = new guest(['Mr.Wang', 'Mrs.Wang'], true, 2, g3_0, [g3_1, g3_2, g3_3, g3_4]);
+    var g4 = new guest(['Qiu Qiu', 'Lucy', "Ann"], true, 0, g4_0, [g4_1, g4_2, g4_3, g4_4]);
 
-    var Guest = [g0, g1, g2];
+
+    var Guest = [g0, g1, g2, g3, g4];
 
     var iclick = 0;
     var brew2_first = true;
@@ -255,16 +270,33 @@
         if (level == 0) {
             $('#sell1').css('display', 'block');
         } else if (level == 1) {
+            $('#sell1').css('display', 'block');
             $('#sell2').css('display', 'block');
             $('#sell3').css('display', 'block');
         } else if (level == 2) {
+            $('#sell1').css('display', 'block');
+            $('#sell2').css('display', 'block');
+            $('#sell3').css('display', 'block');
             $('#sell4').css('display', 'block');
             $('#sell5').css('display', 'block');
         } else if (level == 3) {
+            $('#sell1').css('display', 'block');
+            $('#sell2').css('display', 'block');
+            $('#sell3').css('display', 'block');
+            $('#sell4').css('display', 'block');
+            $('#sell5').css('display', 'block');
             $('#sell6').css('display', 'block');
             $('#sell7').css('display', 'block');
             $('#sell8').css('display', 'block');
         } else if (level == 4) {
+            $('#sell1').css('display', 'block');
+            $('#sell2').css('display', 'block');
+            $('#sell3').css('display', 'block');
+            $('#sell4').css('display', 'block');
+            $('#sell5').css('display', 'block');
+            $('#sell6').css('display', 'block');
+            $('#sell7').css('display', 'block');
+            $('#sell8').css('display', 'block');
             $('#sell9').css('display', 'block');
             $('#sell10').css('display', 'block');
         }
@@ -278,6 +310,16 @@
     $('#cross').on("click", function() {
         $('#shop_window').css('display', 'none');
     })
+
+    function addHour(){
+        if (timeNow[1]<5){
+            timeNow[1]+=1;
+        }else if(timeNow[1]==5){
+            timeNow[0]+=1;
+            timeNow[1]=0;
+        }
+        setHeader();
+    }
 
     /************* shake function **************/
     jQuery.fn.shake = function() {
@@ -558,8 +600,7 @@
         if (guestIndex == 0) {
             $('#guild5').css('display', 'none');
         }
-        timeNow[1] += 1;
-        setHeader();
+        addHour();
         guestIndex += 1;
     }
 
@@ -691,8 +732,17 @@
             $('#chat_brew').css('display', 'block');
             if (guestIndex == 2) {
                 level += 1;
-                $('#shop_window').css('display', 'block');
-                setShopLock();
+                if (level == 1){
+                    $('#shop_window').css('display', 'block');
+                    setShopLock();
+                }
+            }
+            if (guestIndex == 3) {
+                level += 1;
+                if (level == 1){
+                    $('#shop_window').css('display', 'block');
+                    setShopLock();
+                }
             }
         }
     })
@@ -718,8 +768,7 @@
 
     $('#intro_chat').on("click", function() {
         $("#guest_window").css('display', 'none');
-        timeNow[1] += 1;
-        setHeader();
+        addHour();
         guestChat();
     })
 
