@@ -19,7 +19,7 @@
     $('#pitcher').attr('drag', 'false');
 
     var level = 0;
-    var money = 0;
+    var money = 100;
     var tea = 0;
     var guestIndex = 0;
     var teaPrice = 20;
@@ -79,7 +79,7 @@
     var g4_1 = "You: Hi, Qiu Qiu. Nice to meet you! I would like to recommend Long Jing tea to you. It is a kind of green tea. The flavor is not as strong as Oolong and Puer. I bet you would like it.";
     var g4_2 = "Qiu Qiu: That would be great!";
     var g4_3 = "You: Haha, you know green tea is my favorite one. I read from a book that it can also improve bran function and promote weight loss.";
-    var g4_4 = "Really? I cannot wait to taste it!";
+    var g4_4 = "Qiu Qiu: Really? I cannot wait to taste it!";
 
 
     var g0 = new guest(['Mr.Li'], false, 3, g0_0, []);
@@ -93,6 +93,7 @@
 
     var iclick = 0;
     var brew2_first = true;
+    var brew3_first = true;
 
     function lockOn() {
         var i;
@@ -435,6 +436,9 @@
         if(brew2_first ==true && level==1) {
             $('#guild6').css('display', 'block');
         }
+        if(brew3_first ==true && level==2) {
+            $('#guild8').css('display', 'block');
+        }
         $('#stove').attr('drag', 'false');
         $('#pot').attr('drag', 'true');
     }
@@ -592,6 +596,19 @@
         $('#cup').attr('drag', 'true');
     }
 
+    /********** brew 3 ***********/
+
+    function pourFirst(){
+        $('#dump').fadeIn(500);
+        setTimeout(function() { $('#dump').fadeOut(500); }, 900)
+        $('#pot').attr('drag', 'false');
+        $('#stove').attr('drag', 'true');
+        if(brew3_first ==true && level==2) {
+            $('#guild8').css('display', 'none');
+            brew3_first =false;
+        }
+    }
+
     /******************* Game Section **********************/
     function brewInit() {
         $('#leavesup').css('display', 'none');
@@ -617,6 +634,21 @@
 
     function brew2() {
         drag('#leavesup', '#pot', addLeaves);
+        drag('#stove', '#pot', addWaterLeaves);
+        if (pitcher.lock == false) {
+            drag('#pot', '#pitcher', pourTeaPitcher);
+        }
+        drag('#pitcher', '#cup', pourTeaCup1);
+        drag('#cup', '#seat1pic', payMoney);
+        drag('#cup', '#seat2pic', payMoney);
+        drag('#cup', '#seat3pic', payMoney);
+        drag('#cup', '#seat4pic', payMoney);
+    }
+
+    function brew3(){
+        drag('#leavesup', '#pot', addLeaves);
+        drag('#stove', '#pot', addWaterLeaves);
+        drag('#pot','#sink',pourFirst);
         drag('#stove', '#pot', addWaterLeaves);
         if (pitcher.lock == false) {
             drag('#pot', '#pitcher', pourTeaPitcher);
@@ -730,12 +762,14 @@
         } else if (iclick == 3) {
             $('#chat_content').html(Guest[guestIndex].words[iclick]);
             $('#chat_brew').css('display', 'block');
+            // check guest number to improve the index.
             if (guestIndex == 2) {
                 level += 1;
                 if (level == 1){
                     $('#shop_window').css('display', 'block');
                     setShopLock();
                 }
+                setPara();
             }
             if (guestIndex == 3) {
                 level += 1;
@@ -743,6 +777,7 @@
                     $('#shop_window').css('display', 'block');
                     setShopLock();
                 }
+                setPara();
             }
         }
     })
