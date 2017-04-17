@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chaji Simulation</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script type="text/javascript" src="./script/jquery.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="header_mid">
+            <img id="header_day" src="./img/day1.png"></img>
+            <div id="header_hour">
+                <div id="hour0"></div>
+                <div id="hour1"></div>
+                <div id="hour2"></div>
+                <div id="hour3"></div>
+                <div id="hour4"></div>
+                <div id="hour5"></div>
+            </div>
+        </div>
+        <div id="header_back">
+            <div id="icon1"></div>
+            <div id="icon2"></div>
+            <div id="icon3"></div>
+            <div id="icon4"></div>
+            <div id="icon5"></div>
+            <div id="icon6"></div>
+            <h2 id="money">1000</h2>
+            <h2 id="level">Novice</h2>
+        </div>
+    </header>
+    <div id="shop_window">
+        <div id="cross"></div>
+        <div id="shop_sheet">
+            <div id="shop_scroll">
+                <div id="sell_puer" class="sell">
+                    <label class="shop_price">$20</label>
+                    <img src="./img/sell1.png">
+                    <p>Might improve $50 for each cup of tea.</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell1" class="sell_buy"></div>
+                    <div id="sell1h" class="sell_have"></div>
+                </div>
+                <div id="sell_oolong" class="sell">
+                    <label class="shop_price">$50</label>
+                    <img src="./img/sell2.png">
+                    <p>Might improve $50 for each cup of tea.</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell2" class="sell_buy"></div>
+                    <div id="sell2h" class="sell_have"></div>           
+                </div>
+                <div id="sell_pitcher" class="sell">
+                    <label class="shop_price">$20</label>
+                    <img src="./img/sell3.png">
+                    <p>Pitcher: improve both the taste of your tea and the sell price（+ $30).</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell3" class="sell_buy"></div>
+                    <div id="sell3h" class="sell_have"></div>
+                </div>
+                <div id="sell_decobuy1" class="sell">
+                    <label class="shop_price">$150</label>
+                    <img src="./img/sell4.png">
+                    <p>Decorate your tea shop to attract more guests (seat +1).</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell4" class="sell_buy"></div>
+                    <div id="sell4h" class="sell_have"></div>
+                </div>
+                <div id="sell_decobuy2" class="sell">
+                    <label class="shop_price">$350</label>
+                    <img src="./img/sell5.png">
+                    <p>Decorate your tea shop to attract more guests (seat +1).</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell5" class="sell_buy"></div>
+                    <div id="sell5h" class="sell_have"></div>
+                </div>
+                <div id="sell_teapet" class="sell">
+                    <label class="shop_price">$800</label>
+                    <img src="./img/sell6.png">
+                    <p>Attract more guests (seat +1) and improve $150 for each cup of tea.</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell6" class="sell_buy"></div>
+                    <div id="sell6h" class="sell_have"></div>
+                </div>
+                <div id="sell_dessert" class="sell">
+                    <label class="shop_price">$1000</label>
+                    <img src="./img/sell7.png">
+                    <p>Earn $300 more for each guest.</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell7" class="sell_buy"></div>
+                    <div id="sell7h" class="sell_have"></div>
+                </div>
+                <div id="sell_leaves" class="sell">
+                    <label class="shop_price">$600</label>
+                    <img src="./img/sell8.png">
+                    <p>Upgrade your tea set and improve $100 for each cup.</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell8" class="sell_buy"></div>
+                    <div id="sell8h" class="sell_have"></div>
+                </div>
+                <div id="sell_smelling" class="sell">
+                    <label class="shop_price">$400</label>
+                    <img src="./img/sell9.png">
+                    <p>Improve both the taste of your tea and the sell price (+ $50).</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell9" class="sell_buy"></div>
+                    <div id="sell9h" class="sell_have"></div>
+                </div>
+                <div id="sell_highpot" class="sell">
+                    <label class="shop_price">$2000</label>
+                    <img src="./img/sell10.png">
+                    <p>Upgrade your tea set and improve $300 for each cup.</p>
+                    <div class="sell_lock"></div>
+                    <div id="sell10" class="sell_buy"></div>
+                    <div id="sell10h" class="sell_have"></div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div id="selectTea">
+        <div id="selectTea_bg"></div>
+        <div id="longjing" class="TeaS"><p>Long Jing Tea</p></div>
+        <div id="puer" class="TeaS"><p>Pu'er Tea</p></div>
+        <div id="oolong" class="TeaS"><p>Oolong Tea</p></div>
+    </div>
+    <div id="guest_window" class="bottom_window">
+    	<div class="guest_window_bg"></div>
+    	<div id="guest_spec">
+    		<div id="guest_pic"></div>
+    		<p id="guest_intro" class="bottom_content">Hi! I am Alice, I come from Switzerland where I have a pretty farm with cows and chickens. It's the first time for me to taste the tea, I am very excited! I don't have any preference, just show me what's popular in your shop.</p>
+    		<button id="intro_chat" class="chat_button">Chat for a while</button>
+    		<button id="intro_brew" class="brew_button">Brew the tea</button>
+    		<p id="guest_explain">Brew the tea will cost you one hour. Chat will cost another hour. </br>You have six hours for each day.</p>
+    	</div>
+    </div>
+    <div id="chat_window" class="bottom_window">
+    	<div class="guest_window_bg"></div>
+    	<div id="chat_pic"></div>
+    	<p id="chat_content" class="bottom_content">Hi! I am Alice, I come from Switzerland where I have a pretty farm with cows and chickens. It's the first time for me to taste the tea, I am very excited! I don't have any preference, just show me what's popular in your shop.</p>
+    	<button id="chat_brew" class="brew_button">Brew the tea</button>
+    </div>
+    <section id="seat_section">
+        <div id="seat1" class="seat">
+            <div id="seat1_money" class="money_pay"></div>
+            <p>Customer1</p>
+            <div id="seat1pic"></div>
+        </div>
+        <div id="seat2" class="seat">
+            <div id="seat2_money" class="money_pay"></div>
+            <p>Customer2</p>
+            <div id="seat2pic"></div>
+        </div>
+        <div id="seat3" class="seat">
+            <div id="seat3_money" class="money_pay"></div>
+            <p>Customer3</p>
+            <div id="seat3pic"></div>
+        </div>
+        <div id="seat4" class="seat">
+            <div id="seat4_money" class="money_pay"></div>
+            <p>Customer4</p>
+            <div id="seat4pic"></div>
+        </div>
+    </section>
+    <section id="teaset">
+        <div id="label">
+            <div></div>
+            <div></div>
+            <div id="teapet_label"></div>
+            <div id="smelling_label"></div>
+            <div id="pitcher_label"></div>
+            <div></div>
+            <div></div>
+            <div id="dessert_label"></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="dump"></div>
+        <div id="stove"></div>
+        <div id="fire"></div>
+        <div id="sink"></div>
+        <div id="teapet"></div>
+        <div id="smelling"></div>
+        <div id="napkin"></div>
+        <div id="cup"></div>
+        <div id="pitcher"></div>
+        <div id="pot"></div>
+        <div id="dessert"></div>
+        <div id="teabox"></div>
+        <div id="leaves"></div>
+        <div id="leavesup"></div>
+        <div id="deco">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="decobuy1"></div>
+        <div id="decobuy2"></div>
+    </section>
+        <div id="guild1"></div>
+        <div id="guild2"></div>
+        <div id="guild3"></div>
+        <div id="guild4"></div>
+        <div id="guild5"></div>
+        <div id="guild6"></div>
+        <div id="guild7"></div>
+        <div id="guild8"></div>
+
+    <script type="text/javascript" src="./script/main.js"></script>
+    <script src="https://use.typekit.net/fwz5ooq.js"></script>
+    <script>
+    try {
+        Typekit.load({
+            async: true
+        });
+    } catch (e) {}
+    </script>
+</body>
+
+</html>

@@ -19,7 +19,7 @@
     $('#pitcher').attr('drag', 'false');
 
     var level = 0;
-    var money = 100;
+    var money = 0;
     var tea = 0;
     var guestIndex = 0;
     var teaPrice = 20;
@@ -36,7 +36,7 @@
     var smelling = new teaset('smelling', true, 4, 0, 400);
     var pitcher = new teaset('pitcher', true, 1, 30, 20);
     var dessert = new teaset('dessert', true, 3, 300, 1000);
-    var decobuy1 = new teaset('decobuy1', true, 2, 0, 150);
+    var decobuy1 = new teaset('decobuy1', true, 1, 0, 150);
     var decobuy2 = new teaset('decobuy2', true, 2, 0, 350);
     var puer = new teaset('puer', true, 0, 0, 20);
     var oolong = new teaset('oolong', true, 1, 0, 50);
@@ -44,7 +44,7 @@
     var leaves = new teaset('leaves', false, 3, 100, 600);
     var highpot = new teaset('leaves', false, 4, 800, 2000);
 
-    var seat2 = new teaset('seat2', false, 0, 0, 100);
+    var seat2 = new teaset('seat2', true, 0, 0, 100);
     var seat3 = new teaset('seat3', true, 0, 0, 200);
     var seat4 = new teaset('seat4', true, 0, 0, 300);
 
@@ -72,7 +72,7 @@
     var g2_4 = "Qin: Definitely, let’s brew a tea, I will tell you how to do it. But, firstly, you need to buy a pitcher in the tea shop!";
     var g3_0 = "How’s everything going? I am your neighbor and I have been living in this town for ten years. But I have never been in this shop. Don’t mind, it’s not your fault. I don’t like the former shop owner. Anyway, may I have a cup of Oolong? Thanks!";
     var g3_1 = "You: No problem, Mr. Wang. I am wondering what makes you dislike Mr. Li. ";
-    var g3_2 = "Mr. Wang: Um, actually I have never met him. I just heard some bad things about him. It is said that, he never wash the tea leaves before serving the guest. Also, he didn’t use the pitcher. You know the pitcher is impotent to make the tea taste good.";
+    var g3_2 = "Mr. Wang: Um, actually I have never met him. I just heard some bad things about him. It is said that, he had never washed the tea leaves before serving the guest. Also, he didn’t use the pitcher. You know the pitcher is impotent to make the tea taste good.";
     var g3_3 = "You: Oh, I apologize that I am a beginner, I know nothing about what you said. Do you mind teach me?";
     var g3_4 = "Mr. Wang: Ok, click the brew button, make sure you have a pitcher and follow me!";
     var g4_0 = "I am gland to see there is a tea shop here! It’s hot outside, I am thirsty now. Hi, my name is Qiu Qiu. I want a cup of tea to drink. Do you have any recommendation that is not that bitter and can make me feel relaxed?";
