@@ -339,6 +339,16 @@ header{
 	background-image: url(./img/pot.png);
 }
 
+#pot_cover{
+	position: absolute;
+	left:53.5%;
+	top:267px;
+	width:207px;
+	height:142px;
+	display: none;
+	z-index:999;
+}
+
 #dessert{
 	position: absolute;
 	left:66.5%;
@@ -785,6 +795,28 @@ button:hover{
 	background-image: url(./img/guild8.png);
 	display: none;
 	z-index: 99999;
+}
+
+#guild9{
+	position: absolute;
+	width:144px;
+	height:90px;
+	left:15%;
+	top:300px;
+	background-image: url(./img/guild9.png);
+	display: none;
+	z-index: 99999;
+}
+
+#guild10{
+	position: absolute;
+	width:214px;
+	height:90px;
+	left:38%;
+	top:480px;
+	background-image: url(./img/guild10.png);
+	z-index: 99999;
+	display: none;
 }
 
 /*************** shop window *****************/

@@ -18,8 +18,8 @@
     $('#leavesup').attr('drag', 'false');
     $('#pitcher').attr('drag', 'false');
 
-    var level = 0;
-    var money = 0;
+    var level = 3;
+    var money = 100;
     var tea = 0;
     var guestIndex = 4;
     var teaPrice = 20;
@@ -124,6 +124,8 @@
     var iclick = 0;
     var brew2_first = true;
     var brew3_first = true;
+    var brew4_first = true;
+    var brew5_first = true;
 
     function lockOn() {
         var i;
@@ -637,8 +639,35 @@
             $('#guild8').css('display', 'none');
             brew3_first =false;
         }
+
     }
 
+    /********** brew 4 *********/ 
+    function addWaterWarm() {
+        setTimeout(function() { $('#pot_cover').css('background-image', 'url(./img/pot11.png)'); }, 200);
+        setTimeout(function() { $('#pot_cover').css('background-image', 'url(./img/pot22.png)'); }, 400);
+        setTimeout(function() { $('#pot_cover').css('background-image', 'url(./img/pot33.png)'); }, 600);
+        setTimeout(function() { $('#pot_cover').css('background-image', ''); }, 800);
+        setTimeout(function() { $('#pot_cover').css('display', 'none'); }, 800);
+        if(brew4_first ==true && level==3) {
+            $('#guild9').css('display', 'none');
+            $('#guild10').css('display', 'block');
+        }
+        $('#stove').attr('drag', 'false');
+        $('#pot').attr('drag', 'true');
+    }
+
+    function pourWarm(){
+        $('#pot_cover').css('display', 'none');
+        $('#dump').fadeIn(500);
+        setTimeout(function() { $('#dump').fadeOut(500); }, 900)
+        $('#pot').attr('drag', 'false');
+        $('#leavesup').attr('drag', 'true');
+        if(brew4_first ==true && level==3) {
+            $('#guild10').css('display', 'none');
+            brew4_first =false;
+        }
+    }
     /******************* Game Section **********************/
     function brewInit() {
         $('#leavesup').css('display', 'none');
@@ -690,16 +719,42 @@
         drag('#cup', '#seat4pic', payMoney);
     }
 
+    function brew4(){
+        if(brew4_first ==true && level==3) {
+            $('#guild9').css('display', 'block');
+        }
+        drag('#stove', '#pot_cover', addWaterWarm);
+        drag('#pot','#sink',pourWarm);
+        drag('#leavesup', '#pot', addLeaves);
+        drag('#stove', '#pot', addWaterLeaves);
+        drag('#pot','#sink',pourFirst);
+        drag('#stove', '#pot', addWaterLeaves);
+        if (pitcher.lock == false) {
+            drag('#pot', '#pitcher', pourTeaPitcher);
+        }
+        drag('#pitcher', '#cup', pourTeaCup1);
+        drag('#cup', '#seat1pic', payMoney);
+        drag('#cup', '#seat2pic', payMoney);
+        drag('#cup', '#seat3pic', payMoney);
+        drag('#cup', '#seat4pic', payMoney);
+    }
+
     function decideBrew() {
         if (level == 0) {
+            $('#leavesup').attr('drag', 'true');
             brew1();
         } else if (level == 1) {
+            $('#leavesup').attr('drag', 'true');
             brew2();
         } else if (level == 2) {
+            $('#leavesup').attr('drag', 'true');
             brew3();
         } else if (level == 3) {
+            $('#stove').attr('drag', 'true');
+            $('#pot_cover').css('display', 'block');
             brew4();
         } else if (level == 4) {
+            $('#stove').attr('drag', 'true');
             brew5();
         }
     }
@@ -725,7 +780,6 @@
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
-                    $('#leavesup').attr('drag', 'true');
                 });
                 $('#puer').click(function() {
                     tea = 1;
@@ -735,7 +789,6 @@
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
-                    $('#leavesup').attr('drag', 'true');
                 });
                 $('#oolong').click(function() {
                     tea = 2;
@@ -745,7 +798,6 @@
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
-                    $('#leavesup').attr('drag', 'true');
                 });
             } else {
                 $('#longjing').click(function() {
@@ -756,7 +808,6 @@
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
-                    $('#leavesup').attr('drag', 'true');
                 });
                 $('#puer').click(function() {
                     tea = 1;
@@ -766,7 +817,6 @@
                     if (guestIndex == 0) {
                         $('#guild2').css('display', 'block');
                     }
-                    $('#leavesup').attr('drag', 'true');
                 });
             }
         } else {
@@ -777,7 +827,6 @@
                 if (guestIndex == 0) {
                     $('#guild2').css('display', 'block');
                 }
-                $('#leavesup').attr('drag', 'true');
                 decideBrew();
             });
         }
@@ -802,6 +851,14 @@
                 setPara();
             }
             if (guestIndex == 3) {
+                level += 1;
+                if (level == 1){
+                    $('#shop_window').css('display', 'block');
+                    setShopLock();
+                }
+                setPara();
+            }
+            if (guestIndex == 7) {
                 level += 1;
                 if (level == 1){
                     $('#shop_window').css('display', 'block');
