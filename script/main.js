@@ -526,14 +526,21 @@
         }
     }
 
-    function rightTea() {
+    rightTea = () => {
         if (Guest[guestIndex].tea == tea) {
             money += teaPrice;
             money += 50;
+            $('#money_pop').css('display', 'block');
+            $('#teaP').html(teaPrice);
             setPara();
+            setTimeout(function() { $('#money_pop').fadeOut(500); }, 900)
         } else {
             money += teaPrice;
+            $('#money_pop').css('display', 'block');
+            $('#teaP').html(teaPrice);
             setPara();
+            setTimeout(function() { $('#money_pop').fadeOut(500); }, 900)
+
         }
     }
 
@@ -679,7 +686,6 @@
         addHour();
         guestIndex += 1;
     }
-
 
     function brew1() {
         drag('#leavesup', '#pot', addLeaves);

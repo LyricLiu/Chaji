@@ -25,6 +25,33 @@ header{
 	background-color: #404763;
 }
 
+#money_pop{
+	position: absolute;
+	width:110px;
+	height:66px;
+	background-image: url(./img/money_pop.png);
+	top:60px;
+	left:74%;
+	z-index: 9999;
+	display: none;
+}
+
+#money_pop span{
+	position: absolute;
+	font-size: 35px;
+	color:#fff;
+	top:15px;
+	left:20px;
+}
+
+#teaP{
+	position: absolute;
+	font-size: 25px;
+	color:#fff;
+	top:23px;
+	left:43px;
+}
+
 #header_mid{
 	position: fixed;
 	left:calc(50% - 130px);
@@ -911,6 +938,8 @@ button:hover{
 	font-size: 35px;
 	color:#515776;
 }
+
+
 
 
 
