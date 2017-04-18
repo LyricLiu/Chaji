@@ -939,6 +939,44 @@ button:hover{
 	color:#515776;
 }
 
+/****************** Ques Window *********************/
+
+#ques_cross{
+	position: absolute;
+	width:62px;
+	height: 63px;
+	top:-20px;
+	right:-20px;
+	background-image: url(./img/cross.png);
+	cursor: pointer;
+}
+
+#ques_window{
+	position:absolute;
+	width:1000px;
+	left:calc(50% - 500px);
+	top:150px;
+	height:450px;
+	z-index: 999;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+	background-color:#dad4c5; 
+}
+
+#ques_window img{
+	position: absolute;
+	width:480px;
+	right:40px;
+	top:100px;
+}
+
+#ques_w{
+	position: absolute;
+	width:450px;
+	right:540px;
+	top:70px;
+	color:#404763;
+}
+
 
 
 

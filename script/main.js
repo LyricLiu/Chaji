@@ -344,6 +344,14 @@
         $('#shop_window').css('display', 'none');
     })
 
+    $('#icon4').on("click", function() {
+        $('#ques_window').css('display', 'block');
+    })
+
+    $('#ques_cross').on("click", function() {
+        $('#ques_window').css('display', 'none');
+    })
+
     function addHour(){
         if (timeNow[1]<5){
             timeNow[1]+=1;
