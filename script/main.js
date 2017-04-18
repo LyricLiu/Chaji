@@ -21,7 +21,7 @@
     var level = 0;
     var money = 0;
     var tea = 0;
-    var guestIndex = 0;
+    var guestIndex = 4;
     var teaPrice = 20;
     var dragT = false;
 
@@ -80,6 +80,31 @@
     var g4_2 = "Qiu Qiu: That would be great!";
     var g4_3 = "You: Haha, you know green tea is my favorite one. I read from a book that it can also improve bran function and promote weight loss.";
     var g4_4 = "Qiu Qiu: Really? I cannot wait to taste it!";
+    var g5_0 = "Hi! I am Micheal. Congrats on opening your new place! I originally came from New Zealand, I am a farm owner there. But for now I run a Jewelry business. I have been living here for five years and really love this place. Can I have a cup of Puer tea?";
+    var g5_1 = "Thank you! You are my first guest that comes from New Zealand. What makes you change your business? Being a farm owner is pretty cool, I think.";
+    var g5_2 = "You are right. I have never though of coming to China five years ago. A trip changed me. It is the food here that made me really want to stay. I love noodles, dumplings and hot pot. Also, I love tea.";
+    var g5_3 = "Good to know! You are welcome to come here as often as you like!";
+    var g5_4 = "That’s for sure!";
+    var g6_0 = "Namaste. I am Bharati, I came from India. It’s my first time to taste Chinese tea. I am a Indian tea fever. Assam tea and Darjeeling tea are my favorite. Do you serve these two kinds of tea? No worries, if you don’t, I am totally open to all kinds of flavor!";
+    var g6_1 = "Hi Bharati. Nice to see you! You can see I am a foreigner here, I don’t know much about Chinese tea, not to mention indian tea. That’s being said, there is a name I have heard before which is “Masala Chai”. Do you mind let me know what it is?";
+    var g6_2 = "Haha, yeah. So, basically, it is a flavoured tea beverage made by brewing black tea with a mixture of aromatic Indian spices and herbs. It is traditionally prepared by a decoction of green cardamom pods, cinnamon sticks, ground cloves, ground ginger, and black peppercorn together with black tea leaves.";
+    var g6_3 = "Oh, that sounds delicious! I hope to try it one day!";
+    var g6_4 = "I believe it won’t let you down. What would you like to brew for me now? I cannot wait to taste it!";
+    var g7_0 = "It’s surprising to see you missed so many important brewing processes! Hi, I am Yu Xuan, a Chinese Zither musician. Except for music which is my job, studying tea is my favorite thing to do. I would like to have a cup of Oolong tea. I am open to discuss everything that’s about tea culture.";
+    var g7_1 = "Hi Ms. Yu. I am so excited to meet someone who knows a lot about tea culture! Do you mind share some tea making knowledge with me?";
+    var g7_2 = "Well. Do you know why we need to use the pitcher when we brew the tea. It is because if you pour the tea directly from pot to cups, each cup of tea will have a slightly different strength.";
+    var g7_3 = "Oh, so that’s why we need to shake the pitcher before we pour the liquid into the drinking cup.";
+    var g7_4 = "Correct. Also, there is a golden rule of tea making. The smaller the pot, the better the tea. So you see here you used is a very small purple sand clay pot… Let me show you a good way to brew the tea. Click the brew button and follow me. I believe hands-on practice is the best way to improve your knowledge.";
+    var g8_0 = "Hi, have me met before? I am Chen. A manager for the largest shipping company here. I played Majiang for the whole night. I feel sleepy now, but I have to work two hours later. I hate it! I want something that can make me feel refreshed or I won’t pay you even a coin.";
+    var g8_1 = "You are so gorgeous, Mr. Chen. I don’t think we met before which is good for me. Please be polite or I won’t serve you.";
+    var g8_2 = "Hey, I just kidding. Don’t be so serious. I am a regular customer for this shop.";
+    var g8_3 = "Well, okay. So, where are your friends?";
+    var g8_4 = "My friends are gorgers! They eat me out of house. Basically, I’m on my own…";
+    var g9_0 = "Hi, I cannot believe that I am meeting you here! I don’t know what to say. How’s everything going? Your new job is fantastic! I miss you so much these years. Oh, almost forgotten, I am traveling here with my friends Christine and Stephanie. Can we have green tea?";
+    var g9_1 = "Hi, Joanna! My warmest welcome to you. You are always so addictive. I am doing well! I really like my job, I learn a lot here! I am only a step away from true tea master!";
+    var g9_2 = "That’s the greatest news I heard this year! I am proud of you! Is there anything I can do for you?";
+    var g9_3 = "Thanks a lot, Joanna! The biggest problem I face now is that I need to earn 4000 coins in five days which is stressful. Except for that, I am doing everything good!";
+    var g9_4 = "Oh, that’s stressful. No worries, My friends and I want to buy some tea leaves home, we can buy from you! Here is 1000 coins, let me taste your work!";
 
 
     var g0 = new guest(['Mr.Li'], false, 3, g0_0, []);
@@ -87,9 +112,14 @@
     var g2 = new guest(['Qin', 'Lily'], true, 1, g2_0, [g2_1, g2_2, g2_3, g2_4]);
     var g3 = new guest(['Mr.Wang', 'Mrs.Wang'], true, 2, g3_0, [g3_1, g3_2, g3_3, g3_4]);
     var g4 = new guest(['Qiu Qiu', 'Lucy', "Ann"], true, 0, g4_0, [g4_1, g4_2, g4_3, g4_4]);
+    var g5 = new guest(['Micheal', 'Jason', "Nick"], true, 1, g5_0, [g5_1, g5_2, g5_3, g5_4]);
+    var g6 = new guest(['Bharati', 'Gitika', "Dahana"], true, 3, g6_0, [g6_1, g6_2, g6_3, g6_4]);
+    var g7 = new guest(['Ms.Yu', 'Ms.Ling ', "Ms.Hu"], true, 2, g7_0, [g7_1, g7_2, g7_3, g7_4]);
+    var g8 = new guest(['Mr.Chen', 'Ms.Qin ', "Mr.Zhang"], true, 1, g8_0, [g8_1, g8_2, g8_3, g8_4]);
+    var g9 = new guest(['Joanna', 'Christine ', "Stephanie", "Mariam"], true, 3, g9_0, [g9_1, g9_2, g9_3, g9_4]);
 
 
-    var Guest = [g0, g1, g2, g3, g4];
+    var Guest = [g0, g1, g2, g3, g4, g5, g6, g7, g8, g9];
 
     var iclick = 0;
     var brew2_first = true;
