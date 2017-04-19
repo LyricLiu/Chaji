@@ -691,7 +691,9 @@
         $('#leavesup').css('display', 'none');
         $('#pot').css('background-image', 'url(./img/pot.png)');
         $('#cup').css('background-image', 'url(./img/cup.png)');
-        $('#smelling').css('background-image', 'url(./img/smelling.png)');
+        if(level==4){
+            $('#smelling').css('background-image', 'url(./img/smelling.png)');
+        }
         if (guestIndex == 0) {
             $('#guild5').css('display', 'none');
         }
@@ -913,6 +915,13 @@
                     setShopLock();
                 }
                 setPara();
+            }
+            if(guestIndex == 9){
+                money += 1000;
+                $('#money_pop').css('display', 'block');
+                $('#teaP').html('1000');
+                setPara();
+                setTimeout(function() { $('#money_pop').fadeOut(500); }, 900)
             }
         }
     })
