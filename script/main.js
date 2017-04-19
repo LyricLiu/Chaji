@@ -30,6 +30,8 @@
     var seat3_mg = false;
     var seat4_mg = false;
 
+
+
     var timeNow = [0, 0];
 
     var teapet = new teaset('teapet', true, 3, 200, 800);
@@ -235,7 +237,6 @@
             money -= 20;
             setPara();
             lockOn();
-            teaPrice += 30;
             $('#sell3h').css('display', 'block');
         }
     })
@@ -378,34 +379,6 @@
         }
         setHeader();
     }
-
-    /************* shake function **************/
-    jQuery.fn.shake = function() {
-        this.each(function(i) {
-            $(this).css({
-                "position": "absolute"
-            });
-            for (var x = 1; x <= 2; x++) {
-                $(this).animate({
-                    left: 545
-                }, 10).animate({
-                    left: 535
-                }, 50).animate({
-                    left: 535
-                }, 10).animate({
-                    left: 530
-                }, 50).animate({
-                    left: 545
-                }, 50).animate({
-                    left: 540
-                }, 50).animate({
-                    left: 545
-                }, 50);
-            }
-        });
-        return this;
-    }
-
 
     /***************** Drag Function *********************/
     /*
@@ -556,7 +529,8 @@
             money += teaPrice;
             money += 50;
             $('#money_pop').css('display', 'block');
-            $('#teaP').html(teaPrice);
+            var mp = teaPrice + 50;
+            $('#teaP').html(mp);
             setPara();
             setTimeout(function() { $('#money_pop').fadeOut(500); }, 900)
         } else {
@@ -633,7 +607,8 @@
             $('#guild6').css('display', 'none');
             $('#guild7').css('display', 'block');
         }
-        setTimeout(function() { $('#pitcher').shake(); }, 400);
+        setTimeout(function() {$('#pitcher').addClass('animated wobble'); }, 400);
+        setTimeout(function() {$('#pitcher').removeClass('animated wobble');}, 1400);
         $('#pot').attr('drag', 'false');
         $('#pitcher').attr('drag', 'true');
     }
@@ -875,6 +850,7 @@
             // check guest number to improve the index.
             if (guestIndex == 2) {
                 level += 1;
+                teaPrice += 50;
                 if (level == 1){
                     $('#shop_window').css('display', 'block');
                     setShopLock();
@@ -883,6 +859,7 @@
             }
             if (guestIndex == 3) {
                 level += 1;
+                teaPrice += 50;
                 if (level == 1){
                     $('#shop_window').css('display', 'block');
                     setShopLock();
@@ -891,6 +868,7 @@
             }
             if (guestIndex == 7) {
                 level += 1;
+                teaPrice += 50;
                 if (level == 1){
                     $('#shop_window').css('display', 'block');
                     setShopLock();
