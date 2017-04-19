@@ -18,10 +18,10 @@
     $('#leavesup').attr('drag', 'false');
     $('#pitcher').attr('drag', 'false');
 
-    var level = 3;
+    var level = 0;
     var money = 100;
     var tea = 0;
-    var guestIndex = 4;
+    var guestIndex = 0;
     var teaPrice = 20;
     var dragT = false;
 
@@ -126,6 +126,23 @@
     var brew3_first = true;
     var brew4_first = true;
     var brew5_first = true;
+
+    function popLevel(){
+        if (level == 0) {
+            $('#levelwhat').html("#1 Novice");
+        } else if (level == 1) {
+            $('#levelwhat').html("#2 Beginner");
+        } else if (level == 2) {
+            $('#levelwhat').html("#3 Intermediated");
+        } else if (level == 3) {
+            $('#levelwhat').html("#4 Advanced");
+        } else {
+            $('#levelwhat').html("#5 Expert");
+        }
+        $('#levelup').css('display','block');
+        $('#levelup').addClass('animated bounceIn');
+        setTimeout(function() { $('#levelup').fadeOut(500); }, 2000);
+    }
 
     function lockOn() {
         var i;
@@ -888,6 +905,9 @@
         $("#chat_window").css('display', 'none');
         $('#shop_window').css('display', 'none');
         brew();
+        if (guestIndex == 2 || guestIndex == 3 || guestIndex == 7){
+            popLevel();
+        }
     });
 
     function guestChat() {

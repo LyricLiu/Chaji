@@ -25,6 +25,25 @@ header{
 	background-color: #404763;
 }
 
+#levelup{
+	position: absolute;
+	width:544px;
+	height:260px;
+	left:calc(50% - 272px);
+	top:200px;
+	background-image: url(./img/levelup.png);
+	text-align: center;
+	z-index: 9999;
+	display: none;
+}
+
+#levelwhat{
+	color:#fff;
+	font-size: 70px;
+	margin-top:120px;
+	left:40px;
+}
+
 #money_pop{
 	position: absolute;
 	width:110px;
@@ -960,6 +979,7 @@ button:hover{
 	z-index: 999;
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 	background-color:#dad4c5; 
+	display: none;
 }
 
 #ques_window img{
