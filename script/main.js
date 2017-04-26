@@ -430,6 +430,7 @@
 
     $('#icon3').on("click", function() {
         setShopLock();
+        $('#red_dot').css('display', 'none');
         $('#shop_window').css('display', 'block');
     })
 
@@ -966,6 +967,7 @@
             // check guest number to improve the index.
             if (guestIndex == 2) {
                 level += 1;
+                $('#red_dot').css('display', 'block');
                 teaPrice += 50;
                 if (level == 1) {
                     $('#shop_window').css('display', 'block');
@@ -976,6 +978,7 @@
             }
             if (guestIndex == 3) {
                 level += 1;
+                $('#red_dot').css('display', 'block');
                 teaPrice += 50;
                 if (level == 1) {
                     $('#shop_window').css('display', 'block');
@@ -990,6 +993,7 @@
             }
             if (guestIndex == 7) {
                 level += 1;
+                $('#red_dot').css('display', 'block');
                 teaPrice += 50;
                 if (level == 1) {
                     $('#shop_window').css('display', 'block');
@@ -1008,6 +1012,7 @@
             if (guestIndex == 12) {
                 if (level == 2) {
                     level += 1;
+                    $('#red_dot').css('display', 'block');
                     teaPrice += 50;
                     setPara();
                     addHour();
@@ -1016,6 +1021,7 @@
             if (guestIndex == 13) {
                 if (level == 3) {
                     level += 1;
+                    $('#red_dot').css('display', 'block');
                     teaPrice += 50;
                     $('#shop_window').css('display', 'block');
                     setShopLock();
@@ -1026,6 +1032,7 @@
             if (guestIndex == 18) {
                 if (level < 4) {
                     level += 1;
+                    $('#red_dot').css('display', 'block');
                     teaPrice += 50;
                     if (level == 1 || level == 4) {
                         $('#shop_window').css('display', 'block');
@@ -1147,8 +1154,6 @@
         var txt4 = "<p>"+Guest[m].words[3]+"</p>"; 
         $("#history_text").append(name, txt1, txt2, txt3, txt4); 
     }
-
-
 
     guestIntro();
     lockOn();

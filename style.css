@@ -25,6 +25,7 @@ header{
 	background-color: #404763;
 }
 
+
 #levelup{
 	position: absolute;
 	width:544px;
@@ -127,6 +128,18 @@ header{
 	width:39px;
 	height:39px;
 	background-image: url(./img/icon_talk.png);
+}
+
+#red_dot{
+	width:10px;
+	height:10px;
+	border-radius: 5px;
+	top:10px;
+	position: absolute;
+	left:18.5%;
+	background-color: #e84f70;
+	z-index: 999;
+	display:none;
 }
 
 #icon3{
