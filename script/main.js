@@ -61,7 +61,7 @@
         this.words = words;
     }
 
-    var g0_0 = 'Congratulations, my friend! You are now the owner of this fantastic shop! I know you are excited and wanna try it now. But before you serve the first guest, let me teach you the simplest way of brew the tea! Click the button below to start!';
+    var g0_0 = 'Congratulations, my friend! You are now the owner of this fantastic shop! I know you are excited and wanna try it now. But before you serve the first guest, let me teach you the simplest way of brew the tea! <span> Click the button below </span> to start!';
     var g1_0 = "Hi! I am Alice, I come from Switzerland where I have a pretty farm with cows and chickens. It's the first time for me to taste the tea, I am very excited! I don't have any preference, just show me what's popular in your shop.";
     var g1_1 = "You: Hi, Alice! I am glad to meet you! You are my first guest!";
     var g1_2 = "Alice: Oh, I am so lucky! You know today is my final day here, so I was wondering where to spend this most precious afternoon. Then I though I should experience tea culture since I am here and I found your tea shop. It’s so great, I like everything here, the furniture, the aroma …";
@@ -71,12 +71,12 @@
     var g2_1 = "You: Thanks for visiting! Yes, I am new here. Hope you don’t mind I have almost no tea knowledge. Why Pu’er is your favorite tea?";
     var g2_2 = "Qin: You know I have to stay in my shop all day, so I feel tired sometimes. Pu’er tea has a stronger flavor than other tea which helps me reduce plaque. Also, it lowers the risk of heart disease and diabetes. It’s healthy. ";
     var g2_3 = "You: Oh, that’s great! It sounds like you know a lot about tea. Can you give me any suggestion to improve my brewing skill?";
-    var g2_4 = "Qin: Definitely, let’s brew a tea, I will tell you how to do it. But, firstly, you need to buy a pitcher in the tea shop!";
+    var g2_4 = "Qin: Definitely, let’s brew a tea, I will tell you how to do it. But, firstly, you need to <span> buy a pitcher </span> in the tea shop!";
     var g3_0 = "How’s everything going? I am your neighbor and I have been living in this town for ten years. But I have never been in this shop. Don’t mind, it’s not your fault. I don’t like the former shop owner. Anyway, may I have a cup of Oolong? Thanks!";
     var g3_1 = "You: No problem, Mr. Wang. I am wondering what makes you dislike Mr. Li. ";
     var g3_2 = "Mr. Wang: Um, actually I have never met him. I just heard some bad things about him. It is said that, he had never washed the tea leaves before serving the guest. Also, he didn’t use the pitcher. You know the pitcher is impotent to make the tea taste good.";
     var g3_3 = "You: Oh, I apologize that I am a beginner, I know nothing about what you said. Do you mind teach me?";
-    var g3_4 = "Mr. Wang: Ok, click the brew button, make sure you have a pitcher and follow me!";
+    var g3_4 = "Mr. Wang: Ok, click the brew button, make sure you <span> have a pitcher </span> and follow me!";
     var g4_0 = "I am gland to see there is a tea shop here! It’s hot outside, I am thirsty now. Hi, my name is Qiu Qiu. I want a cup of tea to drink. Do you have any recommendation that is not that bitter and can make me feel relaxed?";
     var g4_1 = "You: Hi, Qiu Qiu. Nice to meet you! I would like to recommend Long Jing tea to you. It is a kind of green tea. The flavor is not as strong as Oolong and Puer. I bet you would like it.";
     var g4_2 = "Qiu Qiu: That would be great!";

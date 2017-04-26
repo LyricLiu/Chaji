@@ -25,6 +25,16 @@ header{
 	background-color: #404763;
 }
 
+#guest_intro span{
+	color:#dad4c5;
+	font-style: italic;
+}
+
+#chat_content span{
+	color:#dad4c5;
+	font-style: italic;
+}
+
 
 #levelup{
 	position: absolute;
@@ -932,16 +942,16 @@ button:hover{
 	position: relative;
 	float:left;
 	width:300px;
-	height:300px;
-	text-align: center;
+	height:350px;
 	margin-bottom: 30px;
 }
 
 #shop_scroll p{
 	color:#404763;
 	position: absolute;
-	top:230px;
+	top:270px;
 	width:250px;
+	margin-left:20px;
 }
 
 .sell_buy{
@@ -949,7 +959,7 @@ button:hover{
 	width:84px;
 	height:35px;
 	left:108px;
-	top:290px;
+	top:330px;
 	background-image: url(./img/sell_buy.png);
 	display: none;
 	cursor: pointer;
@@ -960,7 +970,7 @@ button:hover{
 	width:84px;
 	height:35px;
 	left:108px;
-	top:290px;
+	top:330px;
 	background-image: url(./img/sell_lock.png);
 }
 
@@ -969,7 +979,7 @@ button:hover{
 	width:84px;
 	height:35px;
 	left:108px;
-	top:290px;
+	top:330px;
 	background-image: url(./img/have.png);
 	display: none;
 }
@@ -981,6 +991,15 @@ button:hover{
 	font-size: 35px;
 	color:#515776;
 }
+
+.shop_name{
+	position: absolute;
+	top:230px;
+	font-size: 25px;
+	color:#515776;
+	margin-left:20px;
+}
+
 
 /****************** Ques Window *********************/
 
