@@ -1039,6 +1039,7 @@
     })
 
     $('#chat_brew').on("click", function() {
+        add_history(guestIndex);
         iclick = 0;
         $("#chat_window").css('display', 'none');
         $('#shop_window').css('display', 'none');
@@ -1121,6 +1122,31 @@
     $('#replay_btn').on("click", function() {
         location.reload();
     });
+
+    $('#icon1').on("click", function() {
+        location.reload();
+    });
+
+    $('#select_close').on("click", function() {
+        $("#selectTea").css('display', 'none');
+    });
+
+    $('#select_close1').on("click", function() {
+        $("#history").css('display', 'none');
+    });
+
+    $('#icon2').on("click", function() {
+        $("#history").css('display', 'block');
+    });
+
+    function add_history(m){
+        var name = "<span>"+Guest[m].name[0]+"</span>"; 
+        var txt1 = "<p>"+Guest[m].words[0]+"</p>"; 
+        var txt2 = "<p>"+Guest[m].words[1]+"</p>"; 
+        var txt3 = "<p>"+Guest[m].words[2]+"</p>"; 
+        var txt4 = "<p>"+Guest[m].words[3]+"</p>"; 
+        $("#history_text").append(name, txt1, txt2, txt3, txt4); 
+    }
 
 
 

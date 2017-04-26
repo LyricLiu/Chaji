@@ -114,10 +114,10 @@ header{
 #icon1{
 	position: absolute;
 	left:4.9%;
-	top:15px;
-	width:39px;
-	height:32px;
-	background-image: url(./img/icon_menu.png);
+	top:10px;
+	width:40px;
+	height:40px;
+	background-image: url(./img/icon_refresh.png);
 }
 
 #icon2{
@@ -692,6 +692,17 @@ button:hover{
 	display: none;
 }
 
+#select_close{
+	position: absolute;
+	width:62px;
+	height: 63px;
+	top:-20px;
+	right:-20px;
+	background-image: url(./img/cross.png);
+	cursor: pointer;
+	z-index: 99999;
+}
+
 #selectTea_bg{
 	width:100%;
 	height:100%;
@@ -1058,6 +1069,55 @@ button:hover{
 	left:11px;
 	background-image:url("./img/replay_btn.png");
 	cursor:pointer;
+}
+
+/******************** History ********************/
+#select_close1{
+	position: absolute;
+	width:62px;
+	height: 63px;
+	top:-20px;
+	right:-20px;
+	z-index: 99999;
+	background-image: url(./img/cross.png);
+	cursor: pointer;
+}
+
+#history{
+	position:absolute;
+	width:1000px;
+	left:calc(50% - 500px);
+	top:120px;
+	height:500px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+	background-color:#dad4c5;
+	z-index:9999;
+	display: none;
+}
+
+#history_scroll{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+}
+
+#history_text{
+	position: absolute;
+	width:100%;
+	height:100%;
+	overflow: scroll;
+}
+
+#history_text p{
+	font-size: 20px;
+	color:#404763;
+	margin:15px 30px;
+}
+
+#history_text span{
+	font-size: 30px;
+	color:#9d878f;
+	margin:20px 30px;
 }
 
 
