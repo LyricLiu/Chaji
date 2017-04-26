@@ -120,14 +120,14 @@
     var g12_0 = "Hello! I am Lan. I am a writer. My grand father is a famous master of tea. So I have tasted a great amount of tea in my childhood. I wrote all my experience of tea drinking down and published them as a book. Now I am traveling to seek different flavor. Could you please brew a cup of Oolong tea for me?";
     var g12_1 = "Hello, Lan, I’m gland to meet you! I have served a lot of guests. A lot of mentioned the experience of tea drinking, but you are the only one that take it so serious! Could you teach me how to enrich the flavor of the tea!";
     var g12_2 = "Absolutely, do you know what is a good tea?";
-    if (level == 2){
+    if (level == 2) {
         var g12_2 = "Do you know you need to warm tea sets before you brew the tea?";
-    }else if (level == 3 || level ==4){
+    } else if (level == 3 || level == 4) {
         var g12_2 = "Do you know why you need warm tea sets?";
     }
     var g12_3 = "Em … I am not sure.";
     var g12_4 = "Okay, as you see, all the tea sets are pretty small. Following the warming process, the tea inside will remain hot longer as it sits, and the warmth of the pot will cause the leaves to release a burst of fragrance. ";
-    if (level == 0 || level == 1 || level == 2){
+    if (level == 0 || level == 1 || level == 2) {
         var g12_4 = "- I think the answer is quiet simple’ you explain, ‘it should be memorable. If you are still thinking about it after you finish drinking it. It must be pretty good.";
     }
     var g13_0 = "Hi! I am Liu. I am a fever of tea. I have observed several of your guests. They all don’t know how to taste the tea. Fine tea resist easy appreciation. Anyway, may I have a cup of Puer? ";
@@ -135,7 +135,7 @@
     var g13_2 = "They all in a hurry to drink it. Actually, the taste of tea start from the moment you get tea leaves out of the box. We should appreciate the aroma of these dry leaves. Be quiet, smell it and savor the moment.";
     var g13_3 = "Oh, it’s interesting.";
     var g13_4 = "Yeah, when the tea is ready, we should note the color and fragrance of the liquid and then our drink should be deliberate and thoughtful.";
-    if(level == 3){
+    if (level == 3) {
         var g13_4 = "Yeah, when the tea is ready, we should note the color and fragrance of the liquid and then our drink should be deliberate and thoughtful. Buy a smelling cup from the shop, you need this to help you better taste the tea.";
     }
     var g14_0 = "Nice to meet you, I am Anna. I forgot the name of tea I want to drink, I remember the color is red. Could you brew that kind of tea for me, thanks!";
@@ -159,7 +159,7 @@
     var g18_2 = "Haha~ You know, I owned this shop for five days as you, and I had earned 9K coins eventually!";
     var g18_3 = "That’s so amazing! I cannot wait to learn something from you!";
     var g18_4 = "No problem, click the brew button and let me show you how I succeed in this business!";
-    if (level ==4){
+    if (level == 4) {
         var g18_4 = "Oh, no, you are already an expert! That is me that should learn from you!";
     }
     var g19_0 = "Hello, I am Tian Tian. I heard that your tea shop is great. I want to have a cup of Long Jing tea. Thanks!";
@@ -205,7 +205,7 @@
     var brew4_first = true;
     var brew5_first = true;
 
-    function popLevel(){
+    function popLevel() {
         if (level == 0) {
             $('#levelwhat').html("#1 Novice");
         } else if (level == 1) {
@@ -217,7 +217,7 @@
         } else {
             $('#levelwhat').html("#5 Expert");
         }
-        $('#levelup').css('display','block');
+        $('#levelup').css('display', 'block');
         $('#levelup').addClass('animated bounceIn');
         setTimeout(function() { $('#levelup').fadeOut(500); }, 2000);
     }
@@ -338,7 +338,7 @@
     })
 
     $('#sell6').on("click", function() {
-        if (money >= 1000  && seat2.lock == false && seat3.lock == false) {
+        if (money >= 1000 && seat2.lock == false && seat3.lock == false) {
             seat4.lock = false;
             money -= 1000;
             setPara();
@@ -445,12 +445,12 @@
         $('#ques_window').css('display', 'none');
     })
 
-    function addHour(){
-        if (timeNow[1]<5){
-            timeNow[1]+=1;
-        }else if(timeNow[1]==5){
-            timeNow[0]+=1;
-            timeNow[1]=0;
+    function addHour() {
+        if (timeNow[1] < 5) {
+            timeNow[1] += 1;
+        } else if (timeNow[1] == 5) {
+            timeNow[0] += 1;
+            timeNow[1] = 0;
         }
         setHeader();
     }
@@ -538,10 +538,10 @@
             $('#guild3').css('display', 'none');
             $('#guild4').css('display', 'block');
         }
-        if(brew2_first ==true && level==1) {
+        if (brew2_first == true && level == 1) {
             $('#guild6').css('display', 'block');
         }
-        if(brew3_first ==true && level==2) {
+        if (brew3_first == true && level == 2) {
             $('#guild8').css('display', 'block');
         }
         $('#stove').attr('drag', 'false');
@@ -678,12 +678,12 @@
         } else if (tea == 2) {
             $('#pitcher').css('background-image', 'url(./img/pitcher2.png)');
         }
-        if(brew2_first ==true) {
+        if (brew2_first == true) {
             $('#guild6').css('display', 'none');
             $('#guild7').css('display', 'block');
         }
-        setTimeout(function() {$('#pitcher').addClass('animated wobble'); }, 400);
-        setTimeout(function() {$('#pitcher').removeClass('animated wobble');}, 1400);
+        setTimeout(function() { $('#pitcher').addClass('animated wobble'); }, 400);
+        setTimeout(function() { $('#pitcher').removeClass('animated wobble'); }, 1400);
         $('#pot').attr('drag', 'false');
         $('#pitcher').attr('drag', 'true');
     }
@@ -698,7 +698,7 @@
         }
         $('#pitcher').css('background-image', 'url(./img/pitcher.png)');
         $('#pitcher').css('left', '38%');
-        if(brew2_first ==true) {
+        if (brew2_first == true) {
             $('#guild7').css('display', 'none');
             brew2_first = false;
         }
@@ -712,26 +712,26 @@
 
     /********** brew 3 ***********/
 
-    function pourFirst(){
+    function pourFirst() {
         $('#dump').fadeIn(500);
         setTimeout(function() { $('#dump').fadeOut(500); }, 900)
         $('#pot').attr('drag', 'false');
         $('#stove').attr('drag', 'true');
-        if(brew3_first ==true && level==2) {
+        if (brew3_first == true && level == 2) {
             $('#guild8').css('display', 'none');
-            brew3_first =false;
+            brew3_first = false;
         }
 
     }
 
-    /********** brew 4 *********/ 
+    /********** brew 4 *********/
     function addWaterWarm() {
         setTimeout(function() { $('#pot_cover').css('background-image', 'url(./img/pot11.png)'); }, 200);
         setTimeout(function() { $('#pot_cover').css('background-image', 'url(./img/pot22.png)'); }, 400);
         setTimeout(function() { $('#pot_cover').css('background-image', 'url(./img/pot33.png)'); }, 600);
         setTimeout(function() { $('#pot_cover').css('background-image', ''); }, 800);
         setTimeout(function() { $('#pot_cover').css('display', 'none'); }, 800);
-        if(brew4_first ==true && level==3) {
+        if (brew4_first == true && level == 3) {
             $('#guild9').css('display', 'none');
             $('#guild10').css('display', 'block');
         }
@@ -739,19 +739,19 @@
         $('#pot').attr('drag', 'true');
     }
 
-    function pourWarm(){
+    function pourWarm() {
         $('#pot_cover').css('display', 'none');
         $('#dump').fadeIn(500);
         setTimeout(function() { $('#dump').fadeOut(500); }, 900)
         $('#pot').attr('drag', 'false');
         $('#leavesup').attr('drag', 'true');
-        if(brew4_first ==true && level==3) {
+        if (brew4_first == true && level == 3) {
             $('#guild10').css('display', 'none');
-            brew4_first =false;
+            brew4_first = false;
         }
     }
     /******************* brew 5 *******************/
-    function pourSmelling(){
+    function pourSmelling() {
         if (tea == 0) {
             $('#smelling').css('background-image', 'url(./img/smelling_1.png)');
         } else if (tea == 1) {
@@ -766,7 +766,7 @@
         $('#leavesup').css('display', 'none');
         $('#pot').css('background-image', 'url(./img/pot.png)');
         $('#cup').css('background-image', 'url(./img/cup.png)');
-        if(level==4){
+        if (level == 4) {
             $('#smelling').css('background-image', 'url(./img/smelling.png)');
         }
         if (guestIndex == 0) {
@@ -799,10 +799,10 @@
         drag('#cup', '#seat4pic', payMoney);
     }
 
-    function brew3(){
+    function brew3() {
         drag('#leavesup', '#pot', addLeaves);
         drag('#stove', '#pot', addWaterLeaves);
-        drag('#pot','#sink',pourFirst);
+        drag('#pot', '#sink', pourFirst);
         drag('#stove', '#pot', addWaterLeaves);
         if (pitcher.lock == false) {
             drag('#pot', '#pitcher', pourTeaPitcher);
@@ -814,15 +814,15 @@
         drag('#cup', '#seat4pic', payMoney);
     }
 
-    function brew4(){
-        if(brew4_first ==true && level==3) {
+    function brew4() {
+        if (brew4_first == true && level == 3) {
             $('#guild9').css('display', 'block');
         }
         drag('#stove', '#pot_cover', addWaterWarm);
-        drag('#pot','#sink',pourWarm);
+        drag('#pot', '#sink', pourWarm);
         drag('#leavesup', '#pot', addLeaves);
         drag('#stove', '#pot', addWaterLeaves);
-        drag('#pot','#sink',pourFirst);
+        drag('#pot', '#sink', pourFirst);
         drag('#stove', '#pot', addWaterLeaves);
         if (pitcher.lock == false) {
             drag('#pot', '#pitcher', pourTeaPitcher);
@@ -834,15 +834,15 @@
         drag('#cup', '#seat4pic', payMoney);
     }
 
-    function brew5(){
-        if(brew4_first ==true && level==3) {
+    function brew5() {
+        if (brew4_first == true && level == 3) {
             $('#guild9').css('display', 'block');
         }
         drag('#stove', '#pot_cover', addWaterWarm);
-        drag('#pot','#sink',pourWarm);
+        drag('#pot', '#sink', pourWarm);
         drag('#leavesup', '#pot', addLeaves);
         drag('#stove', '#pot', addWaterLeaves);
-        drag('#pot','#sink',pourFirst);
+        drag('#pot', '#sink', pourFirst);
         drag('#stove', '#pot', addWaterLeaves);
         if (pitcher.lock == false) {
             drag('#pot', '#pitcher', pourTeaPitcher);
@@ -967,7 +967,7 @@
             if (guestIndex == 2) {
                 level += 1;
                 teaPrice += 50;
-                if (level == 1){
+                if (level == 1) {
                     $('#shop_window').css('display', 'block');
                     setShopLock();
                 }
@@ -977,24 +977,28 @@
             if (guestIndex == 3) {
                 level += 1;
                 teaPrice += 50;
-                if (level == 1){
+                if (level == 1) {
                     $('#shop_window').css('display', 'block');
                     setShopLock();
                 }
                 setPara();
                 addHour();
+            }
+            /************test************/
+            if(guestIndex == 4){
+                game_over();
             }
             if (guestIndex == 7) {
                 level += 1;
                 teaPrice += 50;
-                if (level == 1){
+                if (level == 1) {
                     $('#shop_window').css('display', 'block');
                     setShopLock();
                 }
                 setPara();
                 addHour();
             }
-            if(guestIndex == 9){
+            if (guestIndex == 9) {
                 money += 1000;
                 $('#money_pop').css('display', 'block');
                 $('#teaP').html('1000');
@@ -1002,7 +1006,7 @@
                 setTimeout(function() { $('#money_pop').fadeOut(500); }, 900)
             }
             if (guestIndex == 12) {
-                if(level == 2){
+                if (level == 2) {
                     level += 1;
                     teaPrice += 50;
                     setPara();
@@ -1010,7 +1014,7 @@
                 }
             }
             if (guestIndex == 13) {
-                if(level == 3){
+                if (level == 3) {
                     level += 1;
                     teaPrice += 50;
                     $('#shop_window').css('display', 'block');
@@ -1020,15 +1024,15 @@
                 }
             }
             if (guestIndex == 18) {
-                if (level < 4){
+                if (level < 4) {
                     level += 1;
                     teaPrice += 50;
-                    if (level == 1 || level == 4){
+                    if (level == 1 || level == 4) {
                         $('#shop_window').css('display', 'block');
                         setShopLock();
                     }
-                setPara();
-                addHour();
+                    setPara();
+                    addHour();
                 }
             }
         }
@@ -1039,7 +1043,7 @@
         $("#chat_window").css('display', 'none');
         $('#shop_window').css('display', 'none');
         brew();
-        if (guestIndex == 2 || guestIndex == 3 || guestIndex == 7){
+        if (guestIndex == 2 || guestIndex == 3 || guestIndex == 7) {
             popLevel();
         }
     });
@@ -1085,6 +1089,40 @@
             $("#guest_window").css('display', 'none');
         });
     }
+
+    /********************** Game_End *************************/
+
+    function game_over() {
+        $("#end").css('display', 'block');
+        if (money >= 4000) {
+            $("#end_img1").css('display', 'block');
+            $("#end_img2").css('display', 'none');
+        } else {
+            $('#end_right_top').css('background-image', 'url(./img/fail.png)');
+            $("#end_img2").css('display', 'block');
+            $("#end_img1").css('display', 'none');
+            $("#whatfeedback").html("How about another five days? Do it again, you might be a good tea shop owner!");
+        }
+        $("#whatnum").html(guestIndex);
+        $("#whatmoney").html(money);
+        if (level == 0) {
+            $('#whatlevel').html("Novice (1/5)");
+        } else if (level == 1) {
+            $('#whatlevel').html("Beginner (2/5)");
+        } else if (level == 2) {
+            $('#whatlevel').html("Intermediated (3/5)");
+        } else if (level == 3) {
+            $('#whatlevel').html("Advanced (4/5)");
+        } else {
+            $('#whatlevel').html("Expert (5/5)");
+        }
+    }
+
+    $('#replay_btn').on("click", function() {
+        location.reload();
+    });
+
+
 
     guestIntro();
     lockOn();

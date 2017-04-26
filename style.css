@@ -997,6 +997,72 @@ button:hover{
 	color:#404763;
 }
 
+/******************* End ********************/
+
+#end{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color: #dad4c5;
+	z-index: 99999;
+	display: none;
+}
+
+#end_img1{
+	display: none;
+}
+
+#end_img2{
+	display: none;
+}
+
+.end_img{
+	position: absolute;
+	left:0px;
+}
+
+#end_right{
+	position: absolute;
+	top:50px;
+	right:8%;
+	width:500px;
+	height:540px;
+}
+
+#end_right_top{
+	width:390px;
+	height:73px;
+	left:0;
+	background-image:url("./img/congrads.png");
+}
+
+#end_right p{
+	font-family: futura;
+	font-size: 20px;
+	color:#9d878f;
+	margin:35px 13px;
+}
+
+#end_right span{
+	color:#404763;
+	font-size: 30px;
+}
+
+#replay_btn{
+	position: absolute;
+	bottom: 0px;
+	width:167px;
+	height:54px;
+	left:11px;
+	background-image:url("./img/replay_btn.png");
+	cursor:pointer;
+}
+
+
+
+
 
 
 
