@@ -74,7 +74,7 @@
     var g2_4 = "Qin: Definitely, let’s brew a tea, I will tell you how to do it. But, firstly, you need to <span> buy a pitcher </span> in the tea shop!";
     var g3_0 = "How’s everything going? I am your neighbor and I have been living in this town for ten years. But I have never been in this shop. Don’t mind, it’s not your fault. I don’t like the former shop owner. Anyway, may I have a cup of Oolong? Thanks!";
     var g3_1 = "You: No problem, Mr. Wang. I am wondering what makes you dislike Mr. Li. ";
-    var g3_2 = "Mr. Wang: Um, actually I have never met him. I just heard some bad things about him. It is said that, he had never washed the tea leaves before serving the guest. Also, he didn’t use the pitcher. You know the pitcher is impotent to make the tea taste good.";
+    var g3_2 = "Mr. Wang: Um, actually I have never met him. I just heard some bad things about him. It is said that, he didn’t use the pitcher to shake the tea, so each cup of his tea tastes different. Also, he had never washed the tea leaves before serving the guest. ";
     var g3_3 = "You: Oh, I apologize that I am a beginner, I know nothing about what you said. Do you mind teach me?";
     var g3_4 = "Mr. Wang: Ok, click the brew button, make sure you <span> have a pitcher </span> and follow me!";
     var g4_0 = "I am gland to see there is a tea shop here! It’s hot outside, I am thirsty now. Hi, my name is Qiu Qiu. I want a cup of tea to drink. Do you have any recommendation that is not that bitter and can make me feel relaxed?";
@@ -447,11 +447,15 @@
     })
 
     function addHour() {
-        if (timeNow[1] < 5) {
+        if (timeNow[1] < 4) {
             timeNow[1] += 1;
         } else if (timeNow[1] == 5) {
-            timeNow[0] += 1;
-            timeNow[1] = 0;
+            if(timeNow[0] < 4){
+                timeNow[0] += 1;
+                timeNow[1] = 0;
+            }else{
+                game_over();
+            }
         }
         setHeader();
     }
@@ -988,7 +992,7 @@
                 addHour();
             }
             /************test************/
-            if(guestIndex == 4){
+            if(guestIndex == 20){
                 game_over();
             }
             if (guestIndex == 7) {
