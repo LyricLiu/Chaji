@@ -447,7 +447,7 @@
     })
 
     function addHour() {
-        if (timeNow[1] < 4) {
+        if (timeNow[1] < 5) {
             timeNow[1] += 1;
         } else if (timeNow[1] == 5) {
             if(timeNow[0] < 4){
@@ -966,6 +966,7 @@
             iclick += 1;
             $('#chat_content').html(Guest[guestIndex].words[iclick]);
         } else if (iclick == 3) {
+            iclick+=1;
             $('#chat_content').html(Guest[guestIndex].words[iclick]);
             $('#chat_brew').css('display', 'block');
             // check guest number to improve the index.
