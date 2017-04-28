@@ -214,7 +214,7 @@
             $('#levelwhat').html("#3 Intermediated");
         } else if (level == 3) {
             $('#levelwhat').html("#4 Advanced");
-        } else {
+        } else if (level ==4) {
             $('#levelwhat').html("#5 Expert");
         }
         $('#levelup').css('display', 'block');
@@ -320,6 +320,7 @@
     $('#sell4').on("click", function() {
         if (money >= 200) {
             seat2.lock = false;
+            decobuy1.lock = false;
             money -= 200;
             setPara();
             lockOn();
@@ -330,6 +331,7 @@
     $('#sell5').on("click", function() {
         if (money >= 500 && seat2.lock == false) {
             seat3.lock = false;
+            decobuy2.lock = false;
             money -= 500;
             setPara();
             lockOn();
@@ -340,6 +342,7 @@
     $('#sell6').on("click", function() {
         if (money >= 1000 && seat2.lock == false && seat3.lock == false) {
             seat4.lock = false;
+            teapet.lock = false;
             money -= 1000;
             setPara();
             lockOn();
@@ -1057,6 +1060,15 @@
         $('#shop_window').css('display', 'none');
         brew();
         if (guestIndex == 2 || guestIndex == 3 || guestIndex == 7) {
+            popLevel();
+        }
+        if (guestIndex == 12 && level == 2){
+            popLevel();
+        }
+        if (guestIndex == 13 && level == 3){
+            popLevel();
+        }
+        if (guestIndex == 18 && level < 4){
             popLevel();
         }
     });
